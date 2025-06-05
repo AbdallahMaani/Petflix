@@ -28,7 +28,7 @@ export const Navbar = () => {
   const fetchCartCount = useCallback(async (userId) => {
     if (userId) {
       try {
-        const response = await axios.get(`http://localhost:5024/api/Carts/${userId}`);
+        const response = await axios.get(`https://localhost:7007/api/Carts/${userId}`);
         setCartItemCount(response.data.cartItems.length);
       } catch (error) {
         console.error('Error fetching cart items:', error);
@@ -65,7 +65,7 @@ export const Navbar = () => {
       if (storedUser) {
         const user = JSON.parse(storedUser);
         try {
-          const response = await axios.get(`http://localhost:5024/api/User/${user.userId}`);
+          const response = await axios.get(`https://localhost:7007/api/User/${user.userId}`);
           const updatedUser = { ...user, ...response.data };
           setUserData(updatedUser);
           localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
@@ -137,9 +137,9 @@ export const Navbar = () => {
   const fetchSearchResults = async (query) => {
     try {
       const [usersResponse, animalsResponse, productsResponse] = await Promise.all([
-        axios.get(`http://localhost:5024/api/User?search=${query}`),
-        axios.get(`http://localhost:5024/api/Animals?search=${query}`),
-        axios.get(`http://localhost:5024/api/Products?search=${query}`),
+        axios.get(`https://localhost:7007/api/User?search=${query}`),
+        axios.get(`https://localhost:7007/api/Animals?search=${query}`),
+        axios.get(`https://localhost:7007/api/Products?search=${query}`),
       ]);
 
       setSearchResults([
@@ -170,8 +170,8 @@ export const Navbar = () => {
       } else {
         // Fetch full item details for animals or products
         const endpoint = result.type === 'animal'
-          ? `http://localhost:5024/api/Animals/${result.animal_id}`
-          : `http://localhost:5024/api/Products/${result.product_id}`;
+          ? `https://localhost:7007/api/Animals/${result.animal_id}`
+          : `https://localhost:7007/api/Products/${result.product_id}`;
         const response = await axios.get(endpoint);
         const fullItemData = response.data;
 
@@ -179,7 +179,7 @@ export const Navbar = () => {
         let reviewsData = [];
         if (result.type === 'product') {
           try {
-            const reviewsResponse = await axios.get(`http://localhost:5024/api/PR_/product/${result.product_id}`);
+            const reviewsResponse = await axios.get(`https://localhost:7007/api/PR_/product/${result.product_id}`);
             reviewsData = reviewsResponse.data;
           } catch (reviewErr) {
             console.error('Error fetching reviews:', reviewErr);
@@ -280,7 +280,7 @@ export const Navbar = () => {
         </li>
       </ul>
 
-      {/*<div className="dark-mode-switch">
+      <div className="dark-mode-switch">
         <label htmlFor="dark-mode-toggle">Dark Mode</label>
         <div className="switch">
           <input
@@ -291,7 +291,7 @@ export const Navbar = () => {
           />
           <span className="slider"></span>
         </div>
-      </div>*/}
+      </div>
 
       <div className="nav-login-cart">
         <FontAwesomeIcon
