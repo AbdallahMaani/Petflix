@@ -1,0 +1,457 @@
+/* Base Styles */
+.hero-container2 {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(to bottom, #062959 0%, #a6adb800 100%);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    padding-top: 3.3rem;
+    margin: 0;
+}
+
+.hero-content2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8rem 5%;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Media Section */
+.media-wrapper2 {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: perspective(1000px) rotateY(-10deg);
+    opacity: 0;
+    animation: fadeInRight2 1.1s ease-in-out forwards;
+    box-shadow: 0 -50px 100px 30px rgba(0, 0, 0, 0.3);
+    width: 30rem;
+    height: 40rem;
+}
+
+.slide-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s ease-in-out;
+    opacity: 0;
+  }
+
+  .slide-container.image-loaded {
+    opacity: 1; /* Make the slide visible */
+  }
+  
+  .slide-container.right {
+    animation: slideInFromRight 0.7s ease-in-out forwards;
+  }
+  
+  .slide-container.left {
+    animation: slideInFromLeft 0.7s ease-in-out forwards;
+  }
+
+.hero-image2 {
+    height: 100%;
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.media-overlay2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(10, 36, 99, 0.2) 0%,
+        rgba(10, 36, 99, 0) 100%
+    );
+    z-index: 1;
+}
+
+/* Slideshow Text Overlay */
+.slide-text-overlay {
+    position: absolute;
+    bottom: 12%;
+    color: rgba(255, 255, 255, 0.838);
+    width: 93.5%;
+    z-index: 2;
+    animation: fadeInUp 1.3s ease-in-out;
+    background-color: #0a256319;
+    border-radius: 20px;
+    padding: .75rem;
+    margin: 1rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 100px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.slide-text-overlay h2 {
+    font-size: 1.8rem;
+    margin-bottom: .9rem;
+    font-weight: 700;
+}
+
+.slide-text-overlay p {
+    font-size: 1.1rem;
+    line-height: 1.25;
+}
+
+/* Slideshow Navigation Buttons */
+.slide-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 3;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-nav-button:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.slide-nav-button.prev {
+    left: 20px;
+}
+
+.slide-nav-button.next {
+    right: 20px;
+}
+
+/* Text Section */
+.hero-text2 {
+    flex: 1;
+    padding-left: 12rem;
+    max-width: 1000px;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-title2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: white;
+    text-shadow: 0 0px 100px rgba(0, 0, 0, 0.);
+}
+
+.title-line2 {
+    display: block;
+    opacity: 0;
+    animation: fadeInUp2 1.3s ease-in-out forwards;
+}
+
+.title-line2:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.title-line2:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.username-welcome2 {
+    color: #b5beca;
+    font-weight: 800;
+}
+
+.hero-description2 {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    animation: fadeInUp2 1.1s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+/* Button Styles */
+.hero-button2 {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeInUp2 0.6s ease-in-out forwards;
+    animation-delay: 0.6s;
+}
+
+.hero-button2:hover {
+    background: white;
+    color: #0a2463;
+    padding-right: 3rem;
+    transform: scale(1.2);
+}
+
+.button-arrow2 {
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.hero-button2:hover .button-arrow2 {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hero-button2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
+.hero-button2:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Scroll Hint */
+.scroll-hint2 {
+    position: absolute;
+    bottom: 45%;
+    left: 43%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scroll-animation2 {
+    width: 24px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    position: relative;
+}
+
+.scroll-animation2::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 4px;
+    height: 8px;
+    background: white;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: scrollBounce2 2s infinite;
+}
+
+/* Animation Keyframes */
+@keyframes scrollBounce2 {
+    0% {
+        transform: translateY(0) translateX(-90%);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(10px) translateX(-90%);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0) translateX(-90%);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn2 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp2 {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight2 {
+    from {
+        opacity: 0;
+        transform: translateX(50px) perspective(1000px) rotateY(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) perspective(1000px) rotateY(-10deg);
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-content2 {
+        flex-direction: column;
+        padding-top: 6rem;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .hero-media2, .hero-text2 {
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    .media-wrapper2 {
+        width: 100%;
+        height: 30rem;
+        transform: perspective(1000px) rotateY(0);
+    }
+    
+    .hero-text2 {
+        margin-top: 3rem;
+        text-align: center;
+        padding-left: 0;
+    }
+    
+    .hero-title2 {
+        font-size: 2.8rem;
+    }
+    
+    .slide-text-overlay {
+        left: 5%;
+        max-width: 90%;
+    }
+    
+    .slide-text-overlay h2 {
+        font-size: 2rem;
+    }
+    
+    .slide-text-overlay p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title2 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-description2 {
+        font-size: 1rem;
+    }
+    
+    .hero-button2 {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .media-wrapper2 {
+        height: 25rem;
+    }
+    
+    .slide-text-overlay h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content2 {
+        padding: 6rem 2rem;
+    }
+    
+    .media-wrapper2 {
+        height: 20rem;
+    }
+    
+    .slide-text-overlay {
+        bottom: 15%;
+    }
+    
+    .slide-text-overlay h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-title2 {
+        font-size: 2rem;
+    }
+    
+    .hero-button2 {
+        padding: 0.7rem 1.5rem;
+    }
+    
+    .slide-nav-button {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+    }
+}
+

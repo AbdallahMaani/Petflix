@@ -1,0 +1,288 @@
+.popular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px; /* Reduced by 10% from 10px */
+  height: 100%;
+  background: linear-gradient(to right, #ffffff, #c2daff);
+}
+
+.popular-h-context {
+  margin-top: 3rem; /* Reduced by 10% from 2rem */
+  color: #001b3bcf;
+  font-size: 2.34rem; /* Reduced by 10% from 2.6rem */
+  font-weight: 900; /* Reduced by 10% from 1000 */
+}
+
+.popular hr {
+  width: 43.2rem; /* Reduced by 10% from 48rem */
+  height: 0.126rem; /* Reduced by 10% from 0.14rem */
+  border-radius: 45px; /* Reduced by 10% from 50px */
+  background: #001b3bcf;
+  margin-bottom: 1.62rem; /* Reduced by 10% from 1.8rem */
+  border: none;
+}
+
+.popular-item {
+  margin-top: 1.35rem; /* Reduced by 10% from 1.5rem */
+  display: flex;
+  justify-content: center;
+  gap: 0.72rem; /* Reduced by 10% from 0.8rem */
+  flex-wrap: wrap;
+}
+
+.animal-controls {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1.5rem; /* Reduced by 10% from 1rem */
+  margin-bottom: 1rem;
+  padding: 1.2rem; /* Reduced by 10% from 2rem */
+  position: relative; /* Ensure the parent has relative positioning */
+  width: 94%; /* Reduced by 10% from 90% */
+  border: none;
+  box-shadow: 0 0.9px 90px 9px rgba(0, 0, 0, 0.2); /* Reduced by 10% from 1px 100px 10px */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  background: rgba(255, 255, 255, 0.093);
+}
+
+.animal-controls select,
+.animal-controls .price-range,
+.animal-controls .animal-search {
+  flex: 1 1 calc(18% - 0.9rem); /* Reduced by 10% from 20% - 1rem */
+  padding: 0.72rem; /* Reduced by 10% from 0.8rem */
+  border: none;
+  box-shadow: 0 0.9px 90px 18px rgba(0, 0, 0, 0.2); /* Reduced by 10% from 1px 100px 20px */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  background: rgba(255, 255, 255, 0.5);
+  min-width: 90px; /* Reduced by 10% from 100px */
+  text-align: center;
+}
+
+.animal-search {
+  flex: 1 1 calc(18% - 0.9rem); /* Reduced by 10% from 20% - 1rem */
+  padding: 0.72rem; /* Reduced by 10% from 0.8rem */
+  border: none;
+  box-shadow: 0 0.9px 90px 18px rgba(0, 0, 0, 0.2); /* Reduced by 10% from 1px 100px 20px */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  background: rgba(255, 255, 255, 0.275);
+  max-width: 100%; /* Ensure full width */
+  width: 100%; /* Ensure full width */
+}
+
+.search-suggestions {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 67.5%; /* Reduced by 10% from 75% */
+  left: 0;
+  width: 45%; /* Reduced by 10% from 50% */
+  background-color: rgba(255, 255, 255, 0.162);
+  backdrop-filter: blur(18px); /* Reduced by 10% from 20px */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  padding: 0.9rem 2.7rem; /* Reduced by 10% from 1rem 3rem */
+  box-shadow: 0 0.9px 9px rgba(0, 0, 0, 0.1); /* Reduced by 10% from 1px 10px */
+  z-index: 1;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .315s ease-in-out forwards; /* Reduced by 10% from .35s */
+}
+
+.price-range {
+  display: flex;
+  gap: 0.9rem; /* Reduced by 10% from 1rem */
+  align-items: center;
+  justify-content: center;
+}
+
+.Price-slider {
+  width: 31.5%; /* Reduced by 10% from 35% */
+}
+
+.reset-btn {
+  background-color: #ffffff6e;
+  color: rgb(0, 0, 0);
+  font-size: 0.9rem; /* Reduced by 10% from 1rem */
+  border: none;
+  padding: 0rem 0.9rem; /* Reduced by 10% from 0rem 1rem */
+  height: 2.7rem; /* Reduced by 10% from 3rem */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  cursor: pointer;
+  transition: background-color 0.27s ease-in-out; /* Reduced by 10% from 0.3s */
+  height: auto;
+}
+
+.reset-btn:hover {
+  background-color: #d3d3d36e;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem; /* Reduced by 10% from 0.5rem */
+  background-color: #ffffff6e;
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  padding: 0.09rem 0.9rem; /* Reduced by 10% from 0.1rem 1rem */
+  box-shadow: 0 0.9px 90px 18px rgba(0, 0, 0, 0.2); /* Reduced by 10% from 1px 100px 20px */
+}
+
+.filter-label {
+  font-size: 0.81rem; /* Reduced by 10% from 0.9rem */
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem; /* Reduced by 10% from 0.5rem */
+  white-space: nowrap;
+  background-color: #ffffff6e;
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+.filter-checkbox {
+  width: 18px; /* Reduced by 10% from 20px */
+  height: 18px; /* Reduced by 10% from 20px */
+  accent-color: #007c04; /* Change color based on your theme */
+  cursor: pointer;
+  color: white;
+}
+
+/* Context.css or your relevant CSS file */
+.product-count-container {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 16.2px; /* Reduced by 10% from 18px */
+  width: 100%;
+  color: #282828;
+  font-size: 900; /* Reduced by 10% from 1000 */
+  padding: 0.9rem; /* Reduced by 10% from 1rem */
+  background: linear-gradient(to right, #ffffff, #c1d0e6);
+  box-shadow: 0 0.9px 90px 9px rgba(0, 0, 0, 0.2); /* Reduced by 10% from 1px 100px 10px */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .27s ease-in-out forwards; /* Reduced by 10% from .3s */
+}
+
+.item-container {
+  margin: 9px; /* Reduced by 10% from 10px */
+}
+
+.popular-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the items horizontally */
+  gap: 18px; /* Reduced by 10% from 20px */
+}
+
+.more-btn {
+  font-size: 1rem; /* Reduced by 10% from 1.1rem */
+  font-weight: 500; /* Reduced by 10% from 100 */
+  background-color: #0d2e5796;
+  color: white;
+  margin-top: 2.25rem; /* Reduced by 10% from 2.5rem */
+  margin-bottom: 3.6rem; /* Reduced by 10% from 4rem */
+  border: none;
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  padding: 0.945rem 1.26rem; /* Reduced by 10% from 1.05rem 1.4rem */
+  cursor: pointer;
+  transition: 0.72s ease; /* Reduced by 10% from 0.8s */
+  box-shadow: 0 0.9px 54px 5.4px rgba(0, 0, 0, 0.4); /* Reduced by 10% from 1px 60px 6px */
+}
+
+.more-btn:hover {
+  background-color: #08264bb7;
+  transform: scale(1.063); /* Reduced by 10% from 1.07 */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(18px); /* Reduced by 10% from 20px */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Add these styles to your existing Context.css */
+
+.filter-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.price-slider {
+  max-width: 80%;
+  flex-grow: 1;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #ddd;
+  outline: none;
+  border-radius: 4px;
+}
+
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #3498db;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.price-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #3498db;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.price-label {
+  min-width: 80px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.animal-search {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-suggestions {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 2rem);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.search-suggestions li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.search-suggestions li:hover {
+  background: #f8f9fa;
+}
+
+

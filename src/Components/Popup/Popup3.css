@@ -1,0 +1,265 @@
+/* Owner Info Section */
+.popup-owner {
+    flex: 1; /* Allows this section to take equal space */
+    text-align: left;
+    padding: 0.72rem 0.9rem; /* Reduced by 10% from 0.8rem 1rem */
+    background-color: rgba(0, 0, 0, 0.09); /* Reduced by 10% from 0.1 */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    height: 100%;
+    
+  }
+  
+  .popup-owner h4 {
+    font-size: 1.125rem; /* Reduced by 10% from 1.25rem */
+    font-weight: 900; /* Reduced by 10% from 1000 */
+    color: white;
+    margin-bottom: 0.72rem; /* Reduced by 10% from 0.8rem */
+    text-align: center;
+  }
+  
+  .popup-owner p {
+    color: #dedede;
+    font-weight: 400; /* Reduced by 10% from 400 */
+    font-size: 0.9rem; /* Reduced by 10% from 1rem */
+    width: 17.82rem; /* Reduced by 10% from 19.8rem */
+    text-align: center;
+  }
+  
+  .popup-animal {
+    flex: 1; /* Allows this section to take equal space */
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.09); /* Reduced by 10% from 0.1 */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    padding: 0.72rem 0.9rem; /* Reduced by 10% from 0.8rem 1rem */
+    height: 100%;
+    
+  }
+  
+  .popup-animal h4 {
+    font-size: 1.125rem; /* Reduced by 10% from 1.25rem */
+    font-weight: 900; /* Reduced by 10% from 1000 */
+    color: white;
+    margin-bottom: 0.72rem; /* Reduced by 10% from 0.8rem */
+    text-align: center;
+  }
+  
+  .popup-animal p {
+    color: #dedede;
+    font-weight: 400; /* Reduced by 10% from 400 */
+    font-size: 0.9rem; /* Reduced by 10% from 1rem */
+    max-width: 17.82rem; /* Reduced by 10% from 19.8rem */
+    text-align: center;
+  }
+  
+  /* Popup Item Details */
+  .popup-item-details {
+    margin-top: 0.9rem; /* Reduced by 10% from 1rem */
+    text-align: left;
+    padding: 0.9rem; /* Reduced by 10% from 1rem */
+    background-color: rgba(0, 0, 0, 0.18); /* Reduced by 10% from 0.2 */
+    border-radius: 9px; /* Reduced by 10% from 10px */
+  }
+  
+  .popup-item-details p {
+    margin: 0.45rem 0; /* Reduced by 10% from 0.5rem */
+    color: #fff;
+    font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+    line-height: 1.44; /* Reduced by 10% from 1.6 */
+  }
+  
+  .popup-item-details .item-description {
+    font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+    color: #ccc;
+  }
+  
+  .popup-item-details .item-category,
+  .popup-item-details .item-gender,
+  .popup-item-details .item-vaccinated {
+    font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+    font-weight: 540; /* Reduced by 10% from 600 */
+  }
+  
+  /* Popup Owner's Contact Info */
+  .popup-owner .owner-location,
+  .popup-owner .owner-phone {
+    font-size: 1.08rem; /* Reduced by 10% from 1.2rem */
+    color: #ccc;
+    margin-bottom: 0.45rem; /* Reduced by 10% from 0.5rem */
+  }
+  
+  .favorite-btn-popup {
+    font-size: .95rem; /* Reduced by 10% from 1.15rem */
+    margin-right: -0.3rem;
+    background-color: #001b3b5c;
+    color: white;
+    border: none;
+    font-weight: 360; /* Reduced by 10% from 400 */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    padding: 0.6rem 1rem; /* Reduced by 10% from 0.75rem 1.4rem */
+    cursor: pointer;
+    transition: 0.72s ease; /* Reduced by 10% from 0.8s */
+    backdrop-filter: blur(5.4px); /* Reduced by 10% from 6px */
+    box-shadow: 0 0.9px 54px 5.4px rgba(0, 0, 0, 0.45); /* Reduced by 10% from 1px 60px 6px */
+  }
+  
+  .favorite-btn-popup.active {
+    background-color: #e50000a0;
+    box-shadow: 0 2px 25px 5px rgba(196, 0, 0, 0.35); /* Adjusted shadow */
+  }
+  
+  .favorite-btn-popup:hover {
+    background-color: #003b6b9e;
+    transform: scale(1.06);
+  }
+  
+  .related-products {
+    padding: 1.35rem; /* Reduced by 10% from 1.5rem */
+    display: flex;
+    flex-direction: row;
+    gap: 0.9rem; /* Reduced by 10% from 1rem */
+    justify-content: space-around;
+    border-top: 0.9px solid rgba(255, 255, 255, 0.18); /* Reduced by 10% from 1px */
+    margin-top: 1.08rem; /* Reduced by 10% from 1.2rem */
+  }
+  
+  .related-product-item {
+    gap: 0.9rem; /* Reduced by 10% from 1rem */
+    margin: 1.35rem; /* Reduced by 10% from 1.5rem */
+    align-items: center;
+    padding: 0.9rem 0; /* Reduced by 10% from 1rem 0 */
+    background-color: #f5f5f51c;
+    padding: 0.9rem; /* Reduced by 10% from 1rem */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    box-shadow: 0 0px 90px 9px rgba(0, 0, 0, 0.09); /* Reduced by 10% from 100px 10px */
+    transition: transform 0.54s ease; /* Reduced by 10% from 0.6s */
+  }
+  
+  .related-product-image {
+    width: 315px; /* Reduced by 10% from 350px */
+    height: 171px; /* Reduced by 10% from 190px */
+    object-fit: cover;
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    margin-bottom: 0.54rem; /* Reduced by 10% from 0.6rem */
+  }
+  
+  .related-product-item:hover {
+    transform: scale(1.045); /* Reduced by 10% from 1.05 */
+  }
+  
+  .related-product-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.45rem; /* Reduced by 10% from 0.5rem */
+    background-color: #f5f5f50f;
+    padding: 0.45rem; /* Reduced by 10% from 0.5rem */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    box-shadow: 0 0px 90px 9px rgba(0, 0, 0, 0.27); /* Reduced by 10% from 100px 10px */
+  }
+  
+  .related-product-info h6 {
+    font-size: 1.035rem; /* Reduced by 10% from 1.15rem */
+    font-weight: bold;
+    color: whitesmoke;
+  }
+  
+  .related-product-info p {
+    font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+    color: white;
+  }
+  
+  /* Popup.css */
+  .view-related-btn {
+    background-color: #001b3bcf;
+    color: white;
+    border: none;
+    font-weight: 720; /* Reduced by 10% from 800 */
+    font-size: 13.5px; /* Reduced by 10% from 15px */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    padding: 0.63rem 1.08rem; /* Reduced by 10% from 0.7rem 1.2rem */
+    cursor: pointer;
+    transition: 0.63s ease; /* Reduced by 10% from 0.7s */
+    box-shadow: 0 0.9px 45px 22.5px rgba(0, 0, 0, 0.18); /* Reduced by 10% from 1px 50px 25px */
+  }
+  
+  .view-related-btn:hover {
+    transform: scale(1.072); /* Reduced by 10% from 1.08 */
+    color: #013a5d;
+    background-color: white;
+  }
+
+  /* Popup.css */
+.confirmation-popup {
+  position: fixed;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(37, 37, 37, 0.65);
+  backdrop-filter: blur(6px);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Ensure it's on top of other elements */
+  text-align: center;
+  box-shadow: 0 0px 100px 25px rgba(0, 0, 0, 0.5); 
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards; 
+}
+
+.confirmation-popup p {
+  margin-bottom: 1.7rem;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.confirmation-popup button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: .3s ease-in-out ;
+}
+
+.confirmation-popup button.delete-btn {
+  background-color: #ac0802;
+  color: white;
+  box-shadow: 0 0px 100px 15px rgba(180, 3, 3, 0.3);
+
+}
+
+.confirmation-popup button.cancel-btn {
+  background-color: #fbfbfb;
+  color: rgb(8, 40, 82);
+}
+
+.confirmation-popup button:hover {
+  opacity: .8;
+  transform: scale(1.05);
+}
+
+
+/* Add a backdrop to cover the rest of the screen */
+
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(18px); /* Reduced by 10% from 20px */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

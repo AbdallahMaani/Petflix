@@ -1,0 +1,110 @@
+.loading-overlay {
+  position: fixed; /* Stay in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 100; /* Ensure it's on top */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .36s ease-in-out forwards; /* Reduced by 10% from .4s */
+}
+
+.loading-spinner {
+  border: 4.5px solid #f3f3f3; /* Reduced by 10% from 5px */
+  border-top: 4.5px solid #5494c0; /* Reduced by 10% from 5px */
+  border-radius: 50%;
+  width: 63px; /* Reduced by 10% from 70px */
+  height: 63px; /* Reduced by 10% from 70px */
+  animation: spin 1.35s linear infinite; /* Reduced by 10% from 1.5s */
+  box-shadow: 0px 0px 90px 17.1px rgba(0, 0, 0, 0.5); /* Reduced by 10% from 100px 19px */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Optional: Add a subtle fade-in effect */
+.loading-overlay.show {
+  opacity: 1; /* Fully visible when show class is present */
+  transition: opacity 0.27s ease-in-out; /* Reduced by 10% from 0.3s */
+}
+
+.loading-overlay {
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.27s ease-in-out; /* Reduced by 10% from 0.3s */
+}
+
+.loading-text {
+  color: white;
+  font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+  font-weight: 180; /* Reduced by 10% from 200 */
+  margin-left: 0.9rem; /* Reduced by 10% from 1rem */
+  text-align: center;
+  backdrop-filter: blur(18px); /* Reduced by 10% from 20px */
+  padding: 0.9rem; /* Reduced by 10% from 1rem */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+}
+
+/* Error Styles (Error.css or within your global.css) */
+.error-overlay {
+  position: fixed;
+  top: 18rem; /* Reduced by 10% from 20rem */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's on top */
+  overflow: hidden;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .36s ease-in-out forwards; /* Reduced by 10% from .4s */
+}
+
+.error-message {
+  background-color: rgb(185, 0, 0); /* Red background */
+  color: white;
+  font-size: 0.9rem; /* Reduced by 10% from 1rem */
+  font-weight: 270; /* Reduced by 10% from 300 */
+  padding: 0.9rem; /* Reduced by 10% from 1rem */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  text-align: center;
+  box-shadow: 0px 0px 90px 17.1px rgba(0, 0, 0, 0.3); /* Reduced by 10% from 100px 19px */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .36s ease-in-out forwards; /* Reduced by 10% from .4s */
+}
+
+/* Optional: Add a subtle fade-in effect (same as loading) */
+.error-overlay.show {
+  opacity: 1;
+  transition: opacity 0.45s ease-in-out; /* Reduced by 10% from 0.5s */
+}
+
+.error-overlay {
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.45s ease-in-out; /* Reduced by 10% from 0.5s */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(18px); /* Reduced by 10% from 20px */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}

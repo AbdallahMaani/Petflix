@@ -1,0 +1,386 @@
+/* Navbar container */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .2% 4%; /* Reduced by 4% from 0.9% 4.5% */
+  box-shadow: 0 0 86.4px 34.56px rgba(0, 0, 0, 0.15); /* Reduced by 4% from 90px 36px */
+  backdrop-filter: blur(21.6px); /* Reduced by 4% from 22.5px */
+  background: linear-gradient(to right, #ffffff61, #d4e5ff64);
+  z-index: 1000; /* Ensure navbar is above other content */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+  border-radius: 0 0 60.48px 60.48px; /* Reduced by 4% from 63px */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards;
+  overflow: visible;
+}
+
+/* Visible state of the navbar */
+.navbar.visible {
+  transform: translateY(0); /* Fully visible */
+}
+
+/* Hidden state of the navbar */
+.navbar.hidden {
+  transform: translateY(-100%); /* Hidden when scrolling down */
+}
+
+/* Navbar logo */
+.nav-logo img {
+  width: 86.4px; /* Reduced by 4% from 90px */
+  height: auto;
+  cursor: pointer;
+}
+
+/* Login and cart section */
+.nav-login-cart {
+  display: flex;
+  align-items: center;
+  gap: .7rem; /* Reduced by 4% from 0.9rem */
+}
+
+/* Navbar menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  margin-left: 0%; /* Reduced by 4% from -2.7% */
+  list-style: none;
+  gap: 1rem; /* Reduced by 4% from 1.35rem */
+  font-size: 1.05rem; /* Reduced by 4% from 1.08rem */
+  font-weight: 400;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards;
+}
+
+/* Navbar menu item */
+.nav-menu li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #06244a;
+  cursor: pointer;
+  padding: 0.3rem 0.9rem; /* Reduced by 4% from 0.27rem 0.9rem */
+  transition: 0.8s ease;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards;
+}
+
+body.dark-mode .nav-menu li {
+  color: whitesmoke;
+}
+.nav-menu li:hover {
+  color: #06244a;
+  margin: 0rem 1.5rem; /* Reduced by 4% from 1.44rem */
+  transform: scale(1.15);
+}
+
+/* Navbar menu item separator (hr) */
+.nav-menu hr {
+  border: none;
+  margin-top: 1.3px; /* Reduced by 4% from 1.35px */
+  width: 100%; /* Reduced by 4% from 81% */
+  height: 1.3px; /* Reduced by 4% from 1.35px */
+  border-radius: 35px; /* Reduced by 4% from 36px */
+  background: #001b3bcf;
+}
+
+.profile-pic-nav , .profile-pic-wlc
+{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid whitesmoke;
+  box-shadow: 0 0 100px 35px rgba(255, 255, 255, 0.4); /* Reduced by 4% from 90px 9px */
+}
+
+@keyframes pulseScale {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 100px 35px rgba(5, 42, 93, 0.55);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 40px 10px rgba(10, 53, 112, 0.45);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 100px 35px rgba(5, 42, 93, 0.55);
+  }
+}
+
+.profile-pic-wlc {
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 0 100px 35px rgba(5, 42, 93, 0.55);
+  vertical-align: top;
+  animation: pulseScale 3s ease-in-out infinite; /* Added animation */
+  transition: all 0.6s ease-in-out; /* Smoother transition for hover effects */
+}
+
+.profile-pic-wlc:hover {
+  filter: brightness(1.1);
+}
+
+
+/* Navbar icon styles */
+.icon {
+  font-size: 1.4688rem; /* Reduced by 4% from 1.53rem */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #0b1a33cc;
+}
+
+.nav-cart-count {
+  width: 1.296rem; /* Reduced by 4% from 1.35rem */
+  height: 1.2528rem; /* Reduced by 4% from 1.305rem */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -18.144%; /* Reduced by 4% from -18.9% */
+  margin-left: -13.824%; /* Reduced by 4% from -14.4% */
+  border-radius: 50%;
+  font-size: 0.6912rem; /* Reduced by 4% from 0.72rem */
+  background: red;
+  color: white;
+}
+
+/* Login button */
+.nav-login-cart button {
+  font-size: 1.037rem; /* Reduced by 4% from 1.08rem */
+  color: #485566a3;
+  font-weight: light;
+  cursor: pointer;
+  border-radius: 25.92px; /* Reduced by 4% from 27px */
+  padding: 8.64px 19.008px; /* Reduced by 4% from 9px 19.8px */
+  outline: none;
+  border: 1px solid #48556647;
+  background: linear-gradient(to right, #ffffff61, #d4e5ff64);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  margin-right: -2rem;
+}
+
+.nav-login-cart button:hover {
+  background-color: #b6cced91;
+  transform: scale(1.06);
+}
+
+.dark-navbar {
+  background: #222;
+  color: white;
+ 
+}
+
+/* Dark mode for body */
+body.dark-mode {
+  background-color: #222;
+  color: white;
+}
+
+.dark-mode-switch {
+  display: flex;
+  align-items: center;
+  gap: 8.64px; /* Reduced by 4% from 9px */
+  cursor: pointer;
+
+}
+
+.dark-mode-switch label {
+  font-size: 1rem; /* Reduced by 4% from 0.81rem */
+  color: #3a3a3a;
+}
+
+
+
+/* Dark mode styles for the login button */
+body.dark-mode .nav-login-cart button {
+  background-color: #b6cced91;
+  color: white;
+}
+
+body.dark-mode .nav-login-cart button:hover {
+  background-color: #656565;
+}
+
+/* Button active state */
+.nav-login-cart button:active {
+  background: #f3f3f3;
+}
+
+/* Dark mode switch */
+
+label {
+  margin: 0%;
+}
+
+/* Dark mode toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34.56px; /* Reduced by 4% from 36px */
+  height: 17.28px; /* Reduced by 4% from 18px */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 17.28px; /* Reduced by 4% from 18px */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13.824px; /* Reduced by 4% from 14.4px */
+  width: 13.824px; /* Reduced by 4% from 14.4px */
+  left: 1.728px; /* Reduced by 4% from 1.8px */
+  bottom: 1.728px; /* Reduced by 4% from 1.8px */
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #00485a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(17.28px); /* Reduced by 4% from 18px */
+}
+
+/* Media Queries for responsiveness */
+
+/* For tablets */
+@media (max-width: 768px) {
+  .nav-menu {
+    gap: 0.864rem; /* Reduced by 4% from 0.9rem */
+    font-size: 0.7776rem; /* Reduced by 4% from 0.81rem */
+  }
+
+  .nav-login-cart {
+    gap: 0.864rem; /* Reduced by 4% from 0.9rem */
+  }
+
+  .nav-logo img {
+    width: 51.84px; /* Reduced by 4% from 54px */
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+  .nav-menu {
+    flex-direction: column;
+    gap: 0.432rem; /* Reduced by 4% from 0.45rem */
+    font-size: 0.6912rem; /* Reduced by 4% from 0.72rem */
+  }
+
+  .nav-login-cart {
+    flex-direction: column;
+    gap: 0.432rem; /* Reduced by 4% from 0.45rem */
+  }
+
+  .nav-logo img {
+    width: 43.2px; /* Reduced by 4% from 45px */
+  }
+
+  .nav-login-cart button {
+    width: 4.32rem; /* Reduced by 4% from 4.5rem */
+    height: 1.728rem; /* Reduced by 4% from 1.8rem */
+    font-size: 0.6912rem; /* Reduced by 4% from 0.72rem */
+  }
+}
+
+.nav-search {
+  position: relative;
+}
+
+.nav-search input {
+  padding: .7rem 2rem; /* Reduced by 4% from 0.72rem 1.8rem */
+  background: rgba(255, 255, 255, 0.282);
+  border: none;
+  border-radius: 15px; /* Reduced by 4% from 18px */
+  box-shadow: 0 0 100px 10px rgba(0, 0, 0, 0.2); /* Reduced by 4% from 90px 9px */
+}
+
+.nav-search .fa-search {
+  position: absolute;
+  right: 80.64px; /* Reduced by 4% from 9px */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 5%;
+  right: 0;
+  background: rgba(255, 255, 255, 0.282);
+  backdrop-filter: blur(5px); 
+  border-radius: 15px; /* Reduced by 4% from 18px */
+  max-height: 110px; /* Reduced by 4% from 180px */
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 0 100px 15px rgba(0, 0, 0, 0.3); /* Reduced by 4% from 90px 9px */
+}
+
+.search-results li {
+  padding: 8.64px; /* Reduced by 4% from 9px */
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  background-color: #f0f0f0;
+}
+
+.search-loading {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.282);
+  backdrop-filter: blur(8.64px); /* Reduced by 4% from 9px */
+  border: none;
+  border-radius: 17.28px; /* Reduced by 4% from 18px */
+  padding: 8.64px; /* Reduced by 4% from 9px */
+  z-index: 1000;
+  box-shadow: 0 0 86.4px 8.64px rgba(0, 0, 0, 0.2); /* Reduced by 4% from 90px 9px */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(17.28px); /* Reduced by 4% from 18px */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}

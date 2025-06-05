@@ -1,0 +1,113 @@
+/* ConnectionLost.css or in your global CSS */
+
+.connection-lost-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 65vh; /* Reduced by 10% from 70vh */
+  margin-top: 5rem; /* Reduced by 10% from 9rem */
+  text-align: center;
+  padding: 18px; /* Reduced by 10% from 20px */
+  font-family: sans-serif; /* Modern font */
+  animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.connection-lost-title {
+  font-size: 2.25em; /* Reduced by 10% from 2.5em */
+  margin-bottom: 13.5px; /* Reduced by 10% from 15px */
+  color: #343a40; /* Darker, but not black */
+  font-weight: 540; /* Reduced by 10% from 600 */
+}
+
+.connection-lost-message {
+  font-size: 1.17em; /* Reduced by 10% from 1.3em */
+  margin-bottom: 22.5px; /* Reduced by 10% from 25px */
+  color: #6c757d; /* Nicer gray */
+  line-height: 1.44; /* Reduced by 10% from 1.6 */
+}
+
+.connection-lost-suggestions {
+  margin-bottom: 27px; /* Reduced by 10% from 30px */
+}
+
+.connection-lost-list {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0;
+  text-align: left;
+  margin: 0 auto; /* Center the list */
+  max-width: 630px; /* Reduced by 10% from 700px */
+}
+
+.connection-lost-list li {
+  margin-bottom: 9px; /* Reduced by 10% from 10px */
+  padding-left: 22.5px; /* Reduced by 10% from 25px */
+  position: relative; /* For custom bullet */
+}
+
+.connection-lost-list li::before { /* Custom bullet */
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #007bff; /* Primary color for bullet */
+}
+
+.connection-lost-retry-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10.8px 22.5px; /* Reduced by 10% from 12px 25px */
+  border: none;
+  border-radius: 7.2px; /* Reduced by 10% from 8px */
+  cursor: pointer;
+  font-size: 0.99em; /* Reduced by 10% from 1.1em */
+  font-weight: 450; /* Reduced by 10% from 500 */
+  transition: background-color 0.18s ease-in-out, transform 0.18s ease-in-out; /* Reduced by 10% from 0.2s */
+  box-shadow: 0 1.8px 4.5px rgba(0, 0, 0, 0.15); /* Reduced by 10% from 2px 5px */
+}
+
+.connection-lost-retry-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.045); /* Reduced by 10% from 1.05 */
+  box-shadow: 0 3.6px 7.2px rgba(0, 0, 0, 0.2); /* Reduced by 10% from 4px 8px */
+}
+
+.connection-lost-contact {
+  margin-top: 27px; /* Reduced by 10% from 30px */
+  color: #6c757d;
+  animation: fadeInUp 0.5s ease-in-out; /* Smooth fade-in animation */
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(18px); /* Reduced by 10% from 20px */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments (example) */
+@media (max-width: 576px) { /* Adjust breakpoint as needed */
+  .connection-lost-title {
+      font-size: 1.8em; /* Reduced by 10% from 2em */
+  }
+
+  .connection-lost-message {
+      font-size: 0.99em; /* Reduced by 10% from 1.1em */
+  }
+
+  .connection-lost-list {
+      max-width: 81%; /* Reduced by 10% from 90% */
+  }
+}

@@ -1,0 +1,661 @@
+/* General Styling */
+
+body {
+  background: linear-gradient(to right, #ffffff, #c2daff);
+}
+
+.profile-page-container {
+  max-width: 95%; /* Reduced by 11% from 94% */
+  margin: 6rem auto 0rem auto; /* Reduced by 11% from 8.5rem */
+  padding: 0.89rem; /* Reduced by 11% from 1rem */
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #ffffff, #c2daff);
+  padding: 1.34rem; /* Reduced by 11% from 1.5rem */
+  border-radius: 22.25px; /* Reduced by 11% from 25px */
+  box-shadow: 0px 0px 89px 8.9px rgba(0, 0, 0, 0.3); /* Reduced by 11% from 100px 10px */
+  margin-bottom: 2.67rem; /* Reduced by 11% from 3rem */
+  text-align: center;
+  position: relative; /* Allows absolute positioning inside */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards;
+}
+
+.profile-header h3 {
+  margin-bottom: 1.34rem; /* Reduced by 11% from 1.5rem */
+  color: #001b3bcf;
+}
+
+/* General Styling for the Options Module */
+.button-container {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Align buttons to the right */
+  gap: 0.75rem; /* Increased spacing between buttons */
+  border-radius: 25px; /* Slightly larger border radius */
+  padding: 1rem; /* Slightly increased padding */
+  box-shadow: 0 1px 100px 15px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
+  flex-wrap:wrap;
+  max-width: 35%;
+  backdrop-filter: blur(25px); /* Increased blur */
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+/* Style for individual buttons */
+.button-container button  {
+  background-color: #072447db;
+  color: white;
+  border: none;
+  z-index: 1000;
+  font-weight: 500;
+  font-size: 0.8rem;
+  border-radius: 22px; /* Slightly larger border radius */
+  padding: 0.8rem 1rem; /* Adjusted padding */
+  cursor: pointer;
+  transition: transform 0.35s ease, background-color 0.35s ease; /* Smooth transitions */
+  box-shadow: 0 2px 100px 30px rgba(0, 59, 107, 0.25); /* Adjusted shadow */
+  width: auto; /* Adjust width to content */
+  min-width: 150px; /* Minimum width for buttons */
+  text-align: center; /* Ensure text is centered */
+  opacity: 0;
+  animation: fadeIn 0.35s ease-in-out forwards;
+}
+
+/* Hover effect for buttons */
+.button-container button:hover {
+  background-color: #011a37df;
+  transform: scale(1.1); /* Slightly larger scale on hover */
+}
+
+/* Cancel button styling */
+.button-container .cancel-btn {
+  background-color: white;
+  color: #003a6b;
+  box-shadow: 0 2px 25px 5px rgba(0, 58, 107, 0.35); /* Adjusted shadow */
+  cursor: pointer;
+}
+
+/* Cancel button hover effect */
+.button-container .cancel-btn:hover {
+  background-color: rgb(221, 221, 221);
+  color: #003a6b;
+}
+
+.button-container .delete-btn {
+  background-color: #c40000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 25px 5px rgba(196, 0, 0, 0.35); /* Adjusted shadow */
+}
+
+/* Cancel button hover effect */
+.button-container .delete-btn:hover {
+  background-color: rgb(221, 221, 221);
+  color: #c40000;
+}
+
+
+.popup-buttons .cancel-btn {
+  background-color: white;
+  color: #003a6b;
+  box-shadow: 0 2px 25px 5px rgba(0, 58, 107, 0.35); /* Adjusted shadow */
+  border: none;
+  padding: 1rem;
+  border-radius: 20px;
+  opacity: 0;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease-in-out forwards;
+  transition: transform 0.35s ease, background-color 0.35s ease; /* Smooth transitions */
+}
+
+/* Cancel button hover effect */
+.popup-buttons .cancel-btn:hover {
+  background-color: rgb(221, 221, 221);
+  color: #003a6b;
+}
+
+
+
+/* Delete button styling */
+
+
+/* Positioning for specific buttons (if needed) */
+.button-container button[style*="right: 11rem"] {
+  margin-right: 11rem; /* Example: Adjust right position */
+}
+
+/* Style for feedback messages */
+.message {
+  padding: 0.6rem .7rem;
+  border-radius: 22px;
+  text-align: center;
+  font-weight: 550;
+  font-size: .9rem;
+  min-width: 16rem;
+  width: auto;
+}
+
+.succsess-message {
+  background-color: #d4edda;
+  color: #155724;
+  box-shadow: 0 1px 100px 15px rgba(19, 101, 0, 0.4);
+}
+
+
+/* Style for delete confirmation popup */
+.popup2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0);
+  padding: 2rem;
+  max-width: 50%;
+  border-radius: 25px;
+  box-shadow: 0 0px 100px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 1001;
+  backdrop-filter: blur(15px);
+}
+
+.popup2 h3 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.popup2 p {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.popup2 .popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .button-container {
+    position: static; /* Adjust positioning for smaller screens */
+    flex-direction: row; /* Display buttons in a row */
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center; /* Center buttons vertically */
+    margin-top: 1rem; /* Add some top margin */
+    max-width: 100%; /* Take full width */
+    padding: 1rem; /* Adjust padding */
+    flex-wrap: wrap; /* Allow buttons to wrap */
+  }
+
+  .button-container button {
+    min-width: 120px; /* Adjust minimum width */
+    font-size: 0.7rem; /* Adjust font size */
+    margin: 0.25rem; /* Adjust margin */
+  }
+}
+
+.input2, .input3 , .input4 , .input5 ,.input6 , .input7 , .input9{
+  background-color: #ffffff1b;
+  border: none;
+  margin: 7.12px 0; /* Reduced by 11% from 8px */
+  padding: 0.445rem; /* Reduced by 11% from 0.5rem */
+  font-size: 11.57px; /* Reduced by 11% from 13px */
+  border-radius: 17.8px; /* Reduced by 11% from 20px */
+  width: 78.32%; /* Reduced by 11% from 88% */
+  outline: none;
+  text-align: center;
+  box-shadow: 0 0.89px 89px 13.35px rgba(0, 0, 0, 0.1); /* Reduced by 11% from 1px 100px 15px */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .4s ease-in-out forwards;
+}
+
+.input3 {
+  font-size: 1.16rem; /* Reduced by 11% from 1.3rem */
+  font-weight: 890; /* Reduced by 11% from 1000 */
+  color: #001b3bcf;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .5s ease-in-out forwards; 
+
+}
+
+.input4 
+{
+  color: #dedede;
+  margin: 0px 0px 14px 0px;
+  font-weight: 400; /* Reduced by 10% from 400 */
+  font-size: 0.9rem; /* Reduced by 10% from 1rem */
+  width: 17.82rem; /* Reduced by 10% from 19.8rem */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.18); /* Reduced by 10% from 0.1 */
+  padding: .66rem;
+  resize: none;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .5s ease-in-out forwards; 
+
+}
+
+.input5
+{
+  color: #dedede;
+  font-weight: 400; /* Reduced by 10% from 400 */
+  font-size: 1rem; /* Reduced by 10% from 1rem */
+  width: 17.82rem; /* Reduced by 10% from 19.8rem */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.18); /* Reduced by 10% from 0.1 */
+  padding: .6rem;
+  margin: 0px 5px 0px 5px;
+  max-width: 10rem;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .5s ease-in-out forwards; 
+
+}
+
+.input6 , .input8
+{
+  color: #dedede;
+  font-weight: 400; /* Reduced by 10% from 400 */
+  font-size: 1em; /* Reduced by 10% from 1rem */
+  width: 17.82rem; /* Reduced by 10% from 19.8rem */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.18); /* Reduced by 10% from 0.1 */
+  padding: 1.2rem;
+  resize: none;
+  min-width: 33.5rem;
+  height: auto;
+  overflow: auto;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .5s ease-in-out forwards; 
+
+}
+
+.input7
+{
+  color: #dedede;
+  font-weight: 1000; /* Reduced by 10% from 400 */
+  font-size: 1.3rem; /* Reduced by 10% from 1rem */
+  width: 22rem; /* Reduced by 10% from 19.8rem */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.18); /* Reduced by 10% from 0.1 */
+  padding: .6rem ;
+  margin: 0px 5px 0px 5px;
+  max-width: 24rem;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .5s ease-in-out forwards; 
+
+}
+
+.input8
+{
+  border-radius: 20px;
+  height: 3.75rem;
+  margin: 0 .5rem;
+}
+
+.input9
+{
+  font-size: 1rem;
+  width: 100%;
+  height: 3rem;
+  flex-wrap: wrap;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* Reduced by 11% from 1rem */
+}
+
+.profile-image {
+  margin-top: -0.62rem; /* Reduced by 11% from -0.7rem */
+  width: 115px; /* Reduced by 11% from 90px */
+  height: 115px; /* Reduced by 11% from 90px */
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0px 0px 89px 22.25px rgba(0, 0, 0, 0.3); /* Reduced by 11% from 100px 25px */
+  border: 1px solid white;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .5s ease-in-out forwards;
+  transition: 1s ease; /* Reduced by 11% from 1s */
+}
+.profile-image:hover{
+  transform: scale(1.1);
+}
+
+
+
+.user-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Reduced by 11% from 20px */
+  flex-wrap: wrap; /* Ensures wrapping on smaller screens */
+}
+
+.user-details {
+  text-align: center;
+  box-shadow: 0px 0px 89px 22.25px rgba(0, 0, 0, 0.1); /* Reduced by 11% from 100px 25px */
+  padding: 1.34rem; /* Reduced by 11% from 1.5rem */
+  border-radius: 30px; /* Reduced by 11% from 30px */
+  flex: 1; /* Makes sure both divs take equal space */
+  min-width: 25rem; /* Reduced by 11% from 438px */
+  transition: 1s ease; /* Reduced by 11% from 1s */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .35s ease-in-out forwards;
+  height: auto;
+}
+
+.user-details:hover {
+  transform: scale(1.00);
+}
+
+.profile-info h2 {
+  font-size: 1.6rem; /* Reduced by 11% from 1.5rem */
+  margin-bottom: 1.5rem;
+  color: #001b3bcf;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards;
+}
+
+.profile-info h3 {
+  font-size: 1.07rem; /* Reduced by 11% from 1.2rem */
+  margin: 0;
+  color: #001b3bcf;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards;
+  margin-bottom: 1rem;
+
+}
+
+.user-details p {
+  margin: 0.5rem 0; /* Reduced by 11% from 0.6rem */
+  font-size: 0.9rem; /* Reduced by 11% from 1rem */
+  color: #525252;
+  line-height: 1.2; /* Reduced by 11% from 1.35 */
+  box-shadow: 0px 0px 89px 22.25px rgba(0, 0, 0, 0.1); /* Reduced by 11% from 100px 25px */
+  padding: 0.7rem 1.7rem; /* Reduced by 11% from 0.7rem 2rem */
+  border-radius: 25px; /* Reduced by 11% from 30px */
+  background-color: #ffffff13;
+}
+
+.review-details {
+  overflow: auto;
+  height: auto;
+  max-height: 21.5rem;
+  text-align: center;
+  box-shadow: 0px 0px 100px 20px rgba(0, 0, 0, 0.2);
+  padding: 1.34rem;
+  border-radius: 30px;
+  flex: 1;
+  min-width: 24rem;
+  transition: 0.89s ease;
+  opacity: 0;
+  animation: fadeIn 0.35s ease-in-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.review-item > div {
+  margin-bottom: 0.5rem;
+}
+
+.review-details {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.review-details > div {
+  display: flex;
+  flex-direction: row; /* Arrange items side by side */
+  flex-wrap: wrap; /* Allow wrapping to next line */
+  justify-content: center; /* Center the items horizontally */
+  gap: 1rem; /* Space between review items */
+}
+
+.review-details .review-item {
+  flex: 1 1 80%; /* Each item takes ~45% of the width, allowing 2 per row with gap */
+  max-width: 32rem; /* Limit max width to ensure two fit side by side */
+  box-shadow: 0px 0px 89px 22.25px rgba(0, 0, 0, 0.1);
+  padding: 0.7rem 1.7rem;
+  border-radius: 25px;
+  background-color: #ffffff43; /* Optional: Add background for clarity */
+}
+
+.review-details p {
+  display: flex;
+  flex-direction: column; /* Keep internal content stacked vertically */
+  align-items: center;
+  margin: 0; /* Remove extra margin since container handles spacing */
+  font-size: 0.9rem;
+  color: #525252;
+  line-height: 1.2;
+}
+
+.review-details p > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensure it spans the container */
+}
+
+.review-details p > div:last-child {
+  text-align: center;
+  width: 100%; /* Ensure review content spans the container */
+}
+
+.review-details em {
+  align-self: flex-end;
+  font-size: 0.8rem;
+  color: #474747;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Adjustment */
+.review-content
+{
+  padding: .8rem;
+  border-radius: 20px;
+  box-shadow: 0 0px 100px 5px rgba(0, 0, 0, 0.2);
+  margin-top: .5rem;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-container {
+    flex-direction: column; /* Stack divs on smaller screens */
+    align-items: center;
+  }
+
+  .user-details {
+    width: 90%; /* Take up most of the screen */
+    max-width: 500px; /* But don't get too large */
+  }
+}
+
+/* Items Section */
+.user-items-section {
+  flex: 1 1 30%; /* Each section takes up about 30% of the container */
+  min-width: 300px; /* Minimum width for each section */
+  margin-bottom: 2rem;  
+}
+
+.Cards-items
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Distribute items evenly */
+  align-items: stretch; /* Make items the same height */
+  gap: 1rem; /* Add some space between the cards */
+}
+
+.user-items-section-h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.6rem;
+  color: #001b3bcf;
+  border-left: 4px solid #001b3b;
+  padding-left: 1rem;
+  font-weight: 1000;
+}
+
+/* Item Gallery */
+.items-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  box-shadow: 0px 0px 100px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem ;
+  border-radius: 30px;
+  justify-content: center;
+  overflow: auto;
+  max-height: 41rem;
+  height: auto;
+}
+
+/* Item Card */
+.item-card {
+  width: 21rem;
+  height: 19.5rem;
+  transition: 1s ease;
+  position: relative; /* Required to position overlay elements */
+}
+
+.item-card:hover {
+  transform: scale(1.05);
+}
+
+.item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+
+}
+
+
+.item-card h3 {
+  backdrop-filter: blur(2px);
+  padding: 0.8rem;
+  box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.2);
+  background: #001b3b5a;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #ffffffcf;
+}
+
+.item-card p {
+  font-size: .93rem;
+}
+
+.no-items-message {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 5rem;
+  padding: 5rem;
+  box-shadow: 0px 0px 100px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+}
+
+
+/* Buttons */
+
+/* Favorite Button */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .items-gallery {
+    justify-content: center;
+  }
+
+  .item-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(17.8px); /* Reduced by 11% from 20px */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-form {
+  margin: 20px 0;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 100px 1px #00000037;
+  display: block;
+  flex-wrap: wrap;
+}
+.review-form select, .review-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: .5rem;
+  display: flex;
+  resize: none;
+  border-radius: 20px;
+  text-align: center;
+}
+.review-form button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.review-form button:disabled {
+  background-color: #ccc;
+}
+.error-message {
+  font-weight: 400;
+}
+
+.success-message {
+  color: green;
+}
+

@@ -1,0 +1,148 @@
+.best-deal2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  background: linear-gradient(to right, #ffffff, #c2daff);
+}
+
+.cover-section2 {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Set height relative to the viewport */
+  overflow: hidden;
+}
+
+
+
+.favorite-btn-best-deal {
+  position: absolute; /* Positioning button absolutely */
+  top: 9.9px; /* Reduced by 10% from 11px */
+  left: 13.5px; /* Reduced by 10% from 15px */
+  background-color: #001b3b5c;
+  color: white;
+  border: none;
+  font-weight: 360; /* Reduced by 10% from 400 */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  padding: 0.54rem 0.9rem; /* Reduced by 10% from 0.6rem 1rem */
+  cursor: pointer;
+  transition: 0.72s ease; /* Reduced by 10% from 0.8s */
+  backdrop-filter: blur(5.4px); /* Reduced by 10% from 6px */
+  box-shadow: 0 0.9px 100px 5.4px rgba(0, 0, 0, 0.5); /* Reduced by 10% from 1px 60px 6px */
+  font-size: 1.125rem; /* Reduced by 10% from 1.25rem */
+}
+
+.favorite-btn-best-deal.active {
+  background-color: #e50000a0;
+}
+
+.favorite-btn-best-deal:hover {
+  background-color: #003b6b9e;
+}
+
+.item-rating-best-deal {
+  position: absolute; /* Positioning stars absolutely */
+  top: 2.7px; /* Reduced by 10% from 3px */
+  right: 20.7px; /* Reduced by 10% from 23px */
+  display: flex;
+  gap: 0.18rem; /* Reduced by 10% from 0.2rem */
+  margin: 0.36rem 0; /* Reduced by 10% from 0.4rem */
+  padding: 1.35px 11.7px; /* Reduced by 10% from 1.5px 13px */
+  border-radius: 27px; /* Reduced by 10% from 30px */
+  backdrop-filter: blur(9px); /* Reduced by 10% from 10px */
+  background-color: #001b3b5c;
+  box-shadow: 0 0.9px 54px 5.4px rgba(0, 0, 0, 0.5); /* Reduced by 10% from 1px 60px 6px */
+}
+
+.star-best-deal {
+  font-size: 1.8rem; /* Reduced by 10% from 2rem */
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.18s; /* Reduced by 10% from 0.2s */
+}
+
+.star-best-deal.filled {
+  color: #ffd700;
+}
+
+.star-best-deal:hover {
+  color: #ffbf00;
+}
+
+.deal-heading-context {
+  margin-top: 1.8rem; /* Reduced by 10% from 2rem */
+  color: #001b3bcf;
+  font-size: 2.34rem; /* Reduced by 10% from 2.6rem */
+  font-weight: 630; /* Reduced by 10% from 700 */
+  text-align: center;
+}
+
+.best-deal-hr {
+  width: 81%; /* Reduced by 10% from 90% */
+  max-width: 43.2rem; /* Reduced by 10% from 48rem */
+  height: 0.126rem; /* Reduced by 10% from 0.14rem */
+  border-radius: 45px; /* Reduced by 10% from 50px */
+  background: #001b3bcf;
+  margin: 0.9rem auto; /* Reduced by 10% from 1rem */
+  border: none;
+}
+
+.buy-now {
+  position: absolute;
+  bottom: 1.8rem; /* Reduced by 10% from 2rem */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(18px); /* Reduced by 10% from 20px */
+  color: #001b3bcf;
+  border: none;
+  font-weight: 450; /* Reduced by 10% from 500 */
+  font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  padding: 0.9rem 1.08rem; /* Reduced by 10% from 1rem 1.2rem */
+  cursor: pointer;
+  transition: transform 0.4s ease, background-color 0.4s ease, color 0.4s ease; /* Reduced by 10% from 0.3s */
+  box-shadow: 0 0px 100px 15px rgba(0, 0, 0, 0.3); /* Reduced by 10% from 1px 20px 10px */
+}
+
+.buy-now:hover {
+  background-color: #001b3bcf;
+  color: white;
+  transform: translateX(-50%) scale(1.08); /* Reduced by 10% from 1.1 */
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.27); /* Reduced by 10% from 0.3 */
+  backdrop-filter: blur(27px); /* Reduced by 10% from 30px */
+  color: white;
+  padding: 18px; /* Reduced by 10% from 20px */
+  text-align: center;
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  width: 81%; /* Reduced by 10% from 90% */
+  max-width: 540px; /* Reduced by 10% from 600px */
+  box-shadow: 0px 0px  100px 15px rgba(0, 0, 0, 0.35); /* Reduced by 10% from 4px 10px 0.4 */
+}
+
+.overlay h1 {
+  font-size: 1.8rem; /* Reduced by 10% from 2rem */
+  margin-bottom: 9px; /* Reduced by 10% from 10px */
+}
+
+.overlay p {
+  font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+  line-height: 1.44; /* Reduced by 10% from 1.6 */
+  margin-bottom: 1.17rem; /* Reduced by 10% from 1.3rem */
+}
+
+.deal-details {
+  text-align: center;
+  margin-bottom: 0.9rem; /* Reduced by 10% from 1rem */
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 9px; /* Reduced by 10% from 10px */
+}

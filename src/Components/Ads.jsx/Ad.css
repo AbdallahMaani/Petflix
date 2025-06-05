@@ -1,0 +1,172 @@
+.animal-ad {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -7rem; /* Adjusted margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Push content to the bottom */
+    min-height: 400px; /* Ensure a minimum height for the ad */
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp .4s ease-in-out forwards; 
+    margin-bottom: 2.5rem;
+
+  }
+  
+  .ad-image {
+    height: 34rem;
+    display: block;
+    object-fit:cover; /* Changed to cover */
+    object-position:center;
+    width: 100%;
+    border-radius: 40px;
+    
+  }
+    
+  .ad-content {
+    position: absolute;
+    color: white;
+    padding: 1.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(18px);
+    background: rgba(0, 0, 0, 0.338);
+    box-shadow: 0px 0px 90px 20px rgba(0, 0, 0, 0.422);
+    text-align: center;
+    }
+  
+  .ad-content h1 {
+    font-size: 2.4em;
+    font-weight: bolder;
+    margin-bottom: 1.4rem;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 1.5s ease-in-out forwards; 
+    color: rgba(255, 255, 255, 0.7);
+
+  }
+
+  .ad-content h2 {
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: rgba(240, 240, 228, 0.501);
+    margin-bottom: 1rem;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 1s ease-in-out forwards; 
+  }
+
+  
+  .ad-content p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp .5s ease-in-out forwards;
+    color: rgba(240, 240, 228, 0.267);
+
+  }
+  
+  .ad-button {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1.6rem;
+    background-color: rgba(245, 245, 245, 0.9);
+    color: #001731f1;
+    width: 240px;
+    height: 49px;
+    border-radius: 67.5px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.6s ease;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0.9px 0.9px 81px 0.9px rgba(0, 0, 0, 0.3);
+    transition: .5s ease-in-out;
+  }
+  
+  .ad-button:hover {
+    transform: scale(1.07);
+    background-color: #00173100;
+    color: whitesmoke;
+  }
+
+  .image-slider {
+    position: relative;
+    overflow: hidden;
+    width: 97%;
+    border-radius: 20px;
+
+
+  }
+  
+  .slider-buttons-container {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem; /* Adjust spacing between buttons */
+  }
+  
+  .slider-button {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    padding: .6rem 1.5rem;
+    min-width: 7rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .slider-button.prev {
+    /* Remove left positioning */
+  }
+  
+  .slider-button.next {
+    /* Remove right positioning */
+  }
+
+  
+  .fade-in-right {
+    animation: fadeInRight 0.5s ease-in-out;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  
+  
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(300px); /* Start from 50px right */
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(200px); /* Reduced by 10% from 20px */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }

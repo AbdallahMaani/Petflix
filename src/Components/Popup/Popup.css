@@ -1,0 +1,194 @@
+.popup-overlay , .popup-overlay2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  backdrop-filter: blur(0.9rem); /* Reduced by 10% from 1rem */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInUp .3s ease-in-out forwards;
+}
+
+.popup , .popup2 {
+  background: rgba(140, 140, 140, 0.65);
+  padding: 1.35rem 1.35rem; /* Reduced by 10% from 1.5rem 1.5rem */
+  border-radius: 36px; /* Reduced by 10% from 40px */
+  max-width: 88.5%; /* Increases width to 90% of the viewport */
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 72px 36px rgba(0, 0, 0, 0.3); /* Reduced by 10% from 80px 40px */
+  height: 95%; /* Reduced by 10% from 95% */
+  overflow-y: auto; /* Enables vertical scrolling */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards;
+}
+
+/* Updated Styles for popup2 */
+.popup2 {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.234);
+  padding: 1.8rem; /* Reduced by 10% from 2rem */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  text-align: center;
+  box-shadow: 0 0 100px 18px rgba(0, 0, 0, 0.4); /* Reduced by 10% from 20px */
+  height: auto;
+  margin: 0.9rem; /* Reduced by 10% from 1rem */
+}
+
+.popup2 h3 {
+  margin-top: 0.6rem; /* Reduced by 10% from 1rem */
+  font-size: 1.05rem; /* Reduced by 10% from 1.5rem */
+}
+
+.popup2 p {
+  margin: 1.8rem 0 0.72rem 0; /* Reduced by 10% from 2rem 0 0.8rem 0 */
+  font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+}
+
+.popup2-button 
+{
+  background-color: #c40000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 25px 5px rgba(196, 0, 0, 0.35); /* Adjusted shadow */
+  transition: background-color 0.6s;
+}
+
+.popup2 button:hover {
+  background-color: white;
+  color: #9d0000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .popup-overlay2 {
+      width: 95%;
+      margin: 10% auto;
+  }
+}
+
+/* Description Section */
+.popup-right p {
+  color: #eee; /* Light color for better readability */
+  font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+  line-height: 1.44; /* Reduced by 10% from 1.6 */
+  text-align: justify; /* Neat alignment for paragraphs */
+  margin-bottom: 0.8rem; /* Reduced by 10% from 0.9rem */
+  background-color: rgba(0, 0, 0, 0.2); /* Subtle background */
+  padding: 0.63rem; /* Reduced by 10% from 0.7rem */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  width: 36vh; /* Reduced by 10% from 40vh */
+  animation: fadeInUp .4s ease-in-out forwards;
+  opacity: 0;
+}
+
+.popup-description p {
+  color: #eee; /* Light color for better readability */
+  font-size: 1rem; /* Reduced by 10% from 1.2rem */
+  line-height: 1.6; /* Reduced by 10% from 1.6 */
+  text-align: left; /* Neat alignment for paragraphs */
+  background-color: rgba(0, 0, 0, 0.2); /* Subtle background */
+  padding: 0.9rem; /* Reduced by 10% from 1rem */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  width: 441px; /* Reduced by 10% from 490px */
+  overflow: auto;
+  height: 10rem;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInUp .4s ease-in-out forwards;
+}
+
+/* Close Button */
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem; /* Reduced by 10% from 1.8rem */
+  color: white;
+  cursor: pointer;
+  transition: color .5s ease, transform .5s ease;
+}
+
+.close-btn:hover {
+  color: #b4b4b4;
+  transform: scale(1.1);
+}
+
+.popup-main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.9rem; /* Reduced by 10% from 1rem */
+  width: 85.5%; /* Reduced by 10% from 95% */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .5s ease-in-out forwards;
+}
+
+.popup-left {
+  flex: 1;
+  text-align: center;
+  position: relative; /* Needed for positioning the favorite button */
+}
+
+.popup-top {
+  display: flex;
+  justify-content: space-evenly; /* Space out the title, rating, and actions */
+  align-items: center;
+  margin-bottom: 1rem; /* Reduced by 10% from 1rem */
+  position: relative;
+  padding: 0.5rem 1rem; /* Reduced by 10% from 0.4rem 1rem */
+  background-color: rgba(0, 0, 0, 0.1); /* Subtle background */
+  border-radius: 18px; /* Reduced by 10% from 20px */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .3s ease-in-out forwards;
+  
+}
+
+.popup-title {
+  font-size: 1.44rem; /* Reduced by 10% from 1.6rem */
+  color: white;
+  text-align: left;
+  margin: 0;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInUp .5s ease-in-out forwards;
+}
+
+.popup-image {
+  box-shadow: 0 0px 90px 18px rgba(0, 0, 0, 0.4);
+  width: 100%; /* Make the width responsive */
+  max-width: 441px; /* Set a maximum width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 270px; /* Limit the maximum height */
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.popup-rating {
+  margin: 0 auto 0rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem; /* Reduced by 10% from 0.5rem */
+}
+
+.popup-rating .star {
+  font-size: 1.89rem; /* Reduced by 10% from 2.1rem */
+}
+
+.popup-item-rating .star {
+  font-size: 1.35rem; /* Reduced by 10% from 1.5rem */
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.6s;
+}
+
+.popup-item-rating .star.filled {
+  color: #ffd700;
+}

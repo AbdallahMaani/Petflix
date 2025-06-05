@@ -1,0 +1,337 @@
+.popup-item-rating .star:hover {
+    color: #ffbf00;
+}
+
+.popup-actions {
+    flex: 1; /* Align favorite and close buttons on the right */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem; /* Reduced by 10% from 1rem */
+}
+
+.popup-prices {
+    margin: 0.9rem 0; /* Reduced by 10% from 1rem */
+    display: flex;
+    justify-content: center;
+}
+
+.price-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    background-color: rgba(0, 0, 0, 0.225); /* Reduced by 10% from 0.25 */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    padding: .7rem;
+    box-shadow: 0px 3.6px 13.5px rgba(0, 0, 0, 0.18); /* Reduced by 10% from 4px 15px */
+    box-sizing: border-box;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp .5s ease-in-out forwards;
+    gap: 1rem;
+
+}
+
+.price-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.08rem 0rem; /* Reduced by 10% from 1.2rem */
+    color: white;
+    font-weight: 900; /* Reduced by 10% from 1000 */
+    font-size: 0.99rem; /* Reduced by 10% from 1.1rem */
+    background-color: #f5f5f51c;
+    padding: 0.9rem; /* Reduced by 10% from 1rem */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    box-shadow: 0 0px 90px 9px rgba(0, 0, 0, 0.27); /* Reduced by 10% from 100px 10px */
+    flex-wrap: wrap; /* Ensures better responsiveness */
+    gap: 1.3rem;
+}
+
+.price-info h1 {
+    font-size: 1.08rem; /* Reduced by 10% from 1.2rem */
+    font-weight: bold;
+    color: whitesmoke; /* Highlighted gold color */
+    margin-right: auto; /* Pushes other content to the right */
+}
+
+.reviewer-pic,
+.reviewer-pic2 {
+  width: 45px;
+  height: 45px;
+  border-radius: 45%;
+  object-fit: cover;
+  border: 1.8px solid white;
+  margin-right: 0.5rem;
+  background-color: #f5f5f51c;
+  box-shadow: 0 0px 90px 9px rgba(0, 0, 0, 0.27);
+  margin-left: .5rem;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn .5s ease-in-out forwards; 
+  transition: .5s ease-in-out;
+}
+
+.reviewer-pic:hover
+{
+  transform: scale(1.1);
+}
+
+.reviewer-pic2 {
+  width: 35px;
+  height: 35px;
+  margin-left: 0rem;
+  object-fit: cover;
+  transition: .5s ease-in-out;
+}
+
+.reviewer-pic2:hover
+{
+  transform: scale(1.1);
+}
+
+
+.popup-reviews {
+    background-color: rgba(0, 0, 0, 0.252); /* Reduced by 10% from 0.28 */
+    padding: 13.5px; /* Reduced by 10% from 15px */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    margin-top: 18px; /* Reduced by 10% from 20px */
+    color: white;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp .5s ease-in-out forwards; 
+}
+
+.popup-reviews h4 {
+    font-size: 1.35rem; /* Reduced by 10% from 1.5rem */
+    margin-bottom: 9px; /* Reduced by 10% from 10px */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .5s ease-in-out forwards; 
+
+}
+
+.review {
+  border-top: 1px solid #c9c9c942;
+  padding: 9px 0; /* Reduced by 10% from 10px */
+    display: flex; /* Use Flexbox for layout */
+    align-items: center; /* Vertically center items */
+    text-align: center;
+    justify-content: flex-start; /* Align items with space between them */
+    gap: 0rem; /* Reduced by 10% from 1rem */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .5s ease-in-out forwards; 
+
+}
+
+.review-text {
+    font-style: italic;
+    color: #ffffff;
+    margin: 0rem 0.45rem; /* Reduced by 10% from 0.5rem */
+    background-color: #f5f5f51c;
+    padding: .6rem; /* Reduced by 10% from 1rem */
+    border-radius: 20px; /* Reduced by 10% from 20px */
+    box-shadow: 0 0px 90px 9px rgba(0, 0, 0, 0.27); /* Reduced by 10% from 100px 10px */
+    overflow: auto;
+    max-width: 36rem;
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .5s ease-in-out forwards; 
+
+}
+
+.review-author {
+    font-weight: 1000;
+    color: #ffffffd5;
+    margin-right: 0.1rem; /* Reduced by 10% from 1rem */
+    background-color: #f5f5f51c;
+    padding: 0.5rem; /* Reduced by 10% from 1rem */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    box-shadow: 0 0px 90px 9px rgba(0, 0, 0, 0.27); /* Reduced by 10% from 100px 10px */
+    min-width: 12rem;
+    max-width: 15rem;
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .5s ease-in-out forwards; 
+}  
+
+.review-author:hover
+{
+  text-decoration: underline;
+}
+  .review-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #e6e6e6;
+    font-size: 0.9em;
+    gap: .7rem;
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .5s ease-in-out forwards; 
+
+  }
+  
+  .review-date {
+    font-style: italic;
+  }
+  
+  .review-actions button {
+    background-color: #001b3b5c;
+    color: whitesmoke;
+    border: none;
+    font-size: .93rem;
+    padding: 8px 13px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+  }
+  
+  .review-actions button:hover {
+    transform: scale(1.06);
+    background-color: #19426e;
+  }
+  
+  .add-review {
+    margin: 5px 0px;
+    padding-top: 15px;
+    border-top: 1px solid #c9c9c942;
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .5s ease-in-out forwards; 
+
+  }
+  
+  .add-review textarea {
+    width: 90%;
+    padding: .5rem;
+    margin-bottom: 10px; 
+    border: none;
+    border-radius: 20px;
+    resize: none;
+    background-color: #f5f5f51c;
+    color: whitesmoke;
+    text-align: center;
+  }
+
+  .add-review textarea::placeholder {
+    color: #ffffff; /* Light gray color for the placeholder text */
+    opacity: 0.8; /* Make the placeholder slightly transparent */
+    font-style: italic; /* Italicize the placeholder text */
+  }
+  
+  .add-review button {
+    background-color: #001b3b5c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+  }
+  
+  .add-review button:hover {
+    background-color: #19426e;
+    transform: scale(1.06);
+  }
+
+.popup-price-new {
+    color: rgb(230, 188, 0);
+    font-weight: 900; /* Reduced by 10% from 1000 */
+    font-size: 1.26rem; /* Reduced by 10% from 1.4rem */
+    margin-left: -1rem; /* Reduced by 10% from 0.5rem */
+}
+
+.popup-price-old {
+    color: silver;
+    text-decoration: line-through;
+    font-size: 1.26rem; /* Reduced by 10% from 1.4rem */
+    font-weight: 360; /* Reduced by 10% from 400 */
+    margin-left: -1rem; /* Reduced by 10% from 0.5rem */
+}
+
+.total-price {
+    font-size: 1.305rem; /* Reduced by 10% from 1.45rem */
+    font-weight: bold; /* Make the text bold */
+    color: white; /* A neutral text color */
+    text-align: center; /* Center the text */
+    background-color: #f5f5f51c; /* Optional: light background for emphasis */
+    padding: 0.72rem 0.9rem; /* Reduced by 10% from 0.8rem 1rem */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    box-shadow: 0 0px 90px 9px rgba(0, 0, 0, 0.27); /* Reduced by 10% from 100px 10px */
+}
+
+.cart-section-popup {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem; /* Reduced by 10% from 1rem */
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.135); /* Reduced by 10% from 0.15 */
+    padding: 0.315rem 0.45rem; /* Reduced by 10% from 0.35rem 0.5rem */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+}
+
+.counter-btn {
+    background: transparent;
+    margin: 0 0.45rem; /* Reduced by 10% from 0.5rem */
+    border: none;
+    color: white;
+    font-size: 1.98rem; /* Reduced by 10% from 2.2rem */
+    cursor: pointer;
+    font-weight: 630; /* Reduced by 10% from 700 */
+    transition: color 0.5s, transform 0.5s;
+}
+
+.counter-btn:hover {
+    color: rgb(165, 165, 165);
+    transform: scale(1.1);
+}
+
+.counter-value {
+    margin: 0 1.08rem; /* Reduced by 10% from 1.2rem */
+    color: white;
+    font-size: 1.71rem; /* Reduced by 10% from 1.9rem */
+    font-weight: 720; /* Reduced by 10% from 800 */
+}
+
+.add-to-cart-btn
+{
+  background-color: rgb(0, 97, 201);
+  color: white;
+  font-weight: 630;
+  padding: 0.9rem 1.35rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.4s ease-in-out; /* Modified transition */
+  font-size: 1.07rem;
+  box-shadow: 0 2px 100px 15px rgba(0, 82, 196, 0.4);
+}
+
+.add-to-cart-btn:hover {
+  background-color: rgb(0, 84, 168);
+  transform: scale(1.06);
+}
+
+.remove-from-cart-btn
+{
+  background-color: rgb(168, 0, 0);
+  box-shadow: 0 2px 100px 15px rgba(196, 0, 0, 0.3);
+}
+
+.remove-from-cart-btn:hover {
+  background-color: rgb(144, 0, 0);
+  transform: scale(1.06);
+}
+
+
+/* Container for Owner and Animal Details */
+.popup-details-container {
+    display: flex;
+    justify-content: space-between; /* Space the owner and animal details */
+    gap: 0.45rem; /* Reduced by 10% from 0.5rem */
+}

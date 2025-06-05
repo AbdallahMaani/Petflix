@@ -1,0 +1,170 @@
+.item {
+    width: 20.7rem; /* Reduced by 10% from 23rem */
+    height: 19.62rem; /* Reduced by 10% from 21.8rem */
+    transition: 1s ease;
+    position: relative; /* Required to position overlay elements */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .35s ease-in-out forwards;
+}
+
+.item img {
+    width: 20.25rem; /* Reduced by 10% from 22.5rem */
+    height: 13.5rem; /* Reduced by 10% from 15rem */
+    border-radius: 31.5px; /* Reduced by 10% from 35px */
+    transition: 1s ease;
+    box-shadow: 4.5px 0px 45px 1.8px rgba(0, 0, 0, 0.263); /* Reduced by 10% */
+    object-fit: cover;
+}
+
+.item:hover {
+    margin: 0rem 1.08rem -4.5rem 1.08rem; /* Reduced by 10% */
+    transform: scale(108%);
+}
+
+.item p {
+    margin: 0 -4.5rem 0 0; /* Reduced by 10% */
+    color: #001b3bcf;
+    font-weight: 700;
+    position: absolute;
+    top: 13.95rem; /* Reduced by 10% from 15.5rem */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to align the center */
+    text-align: center; /* Optional: Ensure the text aligns properly */
+}
+
+.item-prices {
+    display: flex;
+    gap: 18px; /* Reduced by 10% from 20px */
+    position: absolute;
+    min-width: 16rem;
+    top: 15.57rem; /* Reduced by 10% from 17.3rem */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to align the center */
+    justify-content: center; /* Center items inside the flex container */
+    
+}
+
+.item-price-new {
+    color: #001b3bcf;
+    font-size: 0.9rem; /* Reduced by 10% from 1rem */
+    font-weight: 1000;
+}
+
+.item-price-old {
+    color: #a1a1a1;
+    font-size: 0.9rem; /* Reduced by 10% from 1rem */
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.item:hover {
+    margin: 0rem 1.08rem; /* Reduced by 10% */
+    transform: scale(108%);
+}
+
+.item2:hover {
+    margin: 0rem 0rem;
+    transform: scale(108%);
+}
+
+/* Favorite Button */
+.favorite-btn {
+    position: absolute; /* Positioning button absolutely */
+    top: 8.1px; /* Reduced by 10% from 9px */
+    left: 13.5px; /* Reduced by 10% from 15px */
+    background-color: #001b3b5c;
+    color: white;
+    border: none;
+    font-weight: 500;
+    font-size: 12px; /* Reduced by 10% from 15px */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    padding: 0.45rem 0.72rem; /* Reduced by 10% */
+    cursor: pointer;
+    transition: 0.8s ease;
+    backdrop-filter: blur(5.4px); /* Reduced by 10% from 6px */
+    box-shadow: 0 0 100px 15px rgba(0, 0, 0, 0.5); /* Reduced by 10% */
+}
+
+.favorite-btn.active {
+    background-color: #e50000a0;
+    box-shadow: 0 2px 100px 15px rgba(196, 0, 0, 0.4); /* Adjusted shadow */
+}
+
+.favorite-btn:hover {
+    background-color: rgba(255, 255, 255, 0.636);
+    color: #001b3bfb;
+}
+
+/* Rating Stars */
+.item-rating {
+    position: absolute; /* Positioning stars absolutely */
+    top: 2.25px; /* Reduced by 10% from 2.5px */
+    right: 20.7px; /* Reduced by 10% from 23px */
+    display: flex;
+    gap: 0.117rem; /* Reduced by 10% from 0.13rem */
+    margin: 0.36rem 0; /* Reduced by 10% */
+    padding: 1.35px 11.7px; /* Reduced by 10% */
+    border-radius: 27px; /* Reduced by 10% from 30px */
+    backdrop-filter: blur(9px); /* Reduced by 10% from 10px */
+    background-color: #001b3b5c;
+    box-shadow: 0 0px 100px 20px rgba(0, 0, 0, 0.5); /* Reduced by 10% */
+}
+
+.star {
+    font-size: 1.215rem; /* Reduced by 10% from 1.35rem */
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star.filled {
+    color: #ffd700;
+}
+
+.star:hover {
+    color: #ffbf00;
+}
+
+.view-btn {
+    position: absolute; /* Positioning button absolutely */
+    top: 153px; /* Reduced by 10% from 170px */
+    left: 38%; /* Reduced by 10% from 38% */
+    background-color: #001b3bcf;
+    color: white;
+    border: none;
+    font-weight: 1000;
+    font-size: 13.5px; /* Reduced by 10% from 15px */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    padding: 0.63rem 1.08rem; /* Reduced by 10% */
+    cursor: pointer;
+    transition: .7s ease;
+    box-shadow: 0 2px 100px 35px rgba(0, 59, 107, 0.3); /* Adjusted shadow */
+}
+
+.view-btn:hover {
+    background-color: white;
+    color: #003a6b;
+    transform: scale(1.15);
+    box-shadow: 0 2px 100px 35px rgba(127, 127, 127, 0.584); /* Adjusted shadow */
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px); /* Reduced by 10% from 20px */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

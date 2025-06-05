@@ -1,0 +1,209 @@
+.footer {
+    background: linear-gradient(135deg, #587bb0, #91aacb, #b8cde4);
+    color: #ffffff;
+    padding: 1rem 4rem;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  .footer-container {
+    max-width: 1400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Make footer-brand (PetFlix) twice as wide */
+    gap: 1rem;
+  }
+  
+  .footer-section {
+    padding: 1rem;
+  }
+  
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footer-logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #ffffff, #b8cde4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .footer-description {
+    font-size: .95rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 700px; /* Limit width for readability */
+  }
+  
+  .footer-copyright {
+    font-size: 0.9rem;
+    color: #b8cde4;
+  }
+  
+  .footer-heading {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    position: relative;
+  }
+  
+  .footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background-color: #ffffff;
+    transition: width 0.45s ease;
+  }
+  
+  .footer-section:hover .footer-heading::after {
+    width: 120px;
+  }
+  
+  .footer-nav-list,
+  .footer-contact-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-nav-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two-column layout for navigation */
+    gap: 0.5rem 1rem; /* Vertical and horizontal spacing */
+  }
+  
+  .footer-nav-list li,
+  .footer-contact-list li {
+    margin-bottom: 0.1rem;
+  }
+  
+  .footer-link {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+  }
+  
+  .footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .footer-icon {
+    margin-right: 0.5rem;
+    color: #b8cde4;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footer-contact-list li:hover .footer-icon {
+    color: #ffffff;
+  }
+  
+  .social-icons-footer {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+  }
+  
+  .social-link {
+    color: #e2e8f0;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .social-link:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .footer-container {
+      grid-template-columns: 1.5fr 1fr 1fr 1fr; /* Slightly reduce branding width */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer-container {
+      grid-template-columns: 1fr; /* Stack all sections */
+      text-align: center;
+    }
+  
+    .footer-brand,
+    .footer-links,
+    .footer-contact,
+    .footer-social {
+      align-items: center;
+    }
+  
+    .footer-nav-list {
+      grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+  
+    .social-icons {
+      justify-content: center;
+    }
+  
+    .footer-heading::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+    .footer-description {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer {
+      padding: 1.5rem 1rem;
+    }
+  
+    .footer-logo {
+      font-size: 2rem;
+    }
+  
+    .footer-heading {
+      font-size: 1.2rem;
+    }
+  
+    .footer-link,
+    .footer-description {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

@@ -1,0 +1,301 @@
+.best-clinics-container {
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa00; /* Slightly lighter background */
+  border-radius: 40px;
+  box-shadow: 0 4px 100px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 97%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #002750cf; /* Darker title color */
+  font-size: 2.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 510px; /* Smaller underline */
+  height: 2px;
+  background-color: #003772; /* Brighter blue */
+  border-radius: 5px;
+}
+
+.clinics-row {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 2rem; /* Reduced horizontal padding */
+  gap: 1.2rem; /* Increased gap */
+  box-shadow: 0 0px 100px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+
+.clinic-card {
+  flex: 0 0 24%; /* Slightly wider cards */
+  background-color: #ffffffa1;
+  border-radius: 20px;
+  box-shadow: 0 0 45px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow intensity */
+  transition: transform 0.7s ease-in-out, margin 0.7s ease-in-out; /* Added margin transition */
+  text-align: left; /* Align text to the left */
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 1rem;
+}
+
+.clinic-card:hover {
+  transform: scale(1.085);
+  margin: 0 1rem; /* Increased margin on hover */
+  z-index: 1; /* Ensure the hovered card is on top */
+}
+
+.clinic-image-container {
+  width: 100%;
+  height: 165px; /* Slightly shorter image container */
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative; /* Added position relative for button positioning */
+}
+
+.clinic-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.clinic-card:hover .clinic-image {
+  transform: scale(1.05);
+}
+
+
+.clinic-name {
+  font-size: 1.3rem;
+  color: #082c55;
+  margin-bottom: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.clinic-location,
+.clinic-phone {
+  color: #6c757d;
+  margin: 8px 0;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.clinic-email {
+  color: #6c757d;
+  margin-top: 15px;
+  text-decoration: none;
+  transition: color 0.5s ease-in-out;
+  vertical-align: middle;
+  align-items: center;
+  text-align: center;
+  font-size: .9rem;
+  margin: 15px;
+}
+
+.clinic-email:hover {
+  text-decoration: underline;
+  color: #575f66;
+}
+
+.clinics-loading,
+.clinics-error {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+.icon-margin {
+  margin-right: 5px;
+}
+
+/* Font Awesome Icons */
+.fas {
+  color: #0c3468e5;
+}
+
+.view-user {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the button */
+  background-color: #07254bcf;
+  color: white;
+  border: none;
+  font-weight: 1000;
+  font-size: 13.7px;
+  border-radius: 20px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: .7s ease;
+  box-shadow: 0 2px 100px 45px rgba(2, 36, 62, 0.70);
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+
+.view-user:hover {
+  background-color: white;
+  color: #003a6b;
+  transform: translate(-50%, -50%) scale(1.09);
+  box-shadow: 0 2px 100px 35px rgba(127, 127, 127, 0.584);
+}
+
+.user-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center; /* Added this line */
+}
+
+.user-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Added this line */
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%; /* Added this line */
+}
+
+.user-detail-icon {
+  color: #0c3468e5;
+  min-width: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+  flex-shrink: 0; /* Added this line */
+}
+
+.user-detail-value {
+  margin-left: -1rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+  word-break: break-word;
+  text-align: center;
+  flex-grow: 1; /* Added this line */
+  max-width: calc(100% - 28px); /* Added this line (20px icon + 8px gap) */
+}
+
+.user-contact-link {
+  color: #6c757d;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block; /* Added this line */
+  width: 100%; /* Added this line */
+  text-align: center; /* Added this line */
+}
+
+/* Rest of your CSS remains exactly the same */
+.user-contact-link:hover {
+  color: #003a6b;
+  text-decoration: underline;
+}
+
+.user-stats-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.user-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.user-stat-icon {
+  color: #0c3468e5;
+  font-size: 1.1rem;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: #082c55;
+  font-size: 1.1rem;
+}
+
+.stat-label {
+  color: #6c757d;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: .9rem;
+  font-weight: 700;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  box-shadow: 0 0px 100px 15px rgba(0, 74, 135, 0.603);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rank-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.clinic-card:nth-child(1) .rank-badge::before {
+  background: rgb(223, 189, 0);
+  box-shadow: 0 0px 100px 25px rgb(223, 189, 0);
+}
+
+.clinic-card:nth-child(2) .rank-badge::before {
+  background: rgb(168, 168, 168);
+  box-shadow: 0 0px 100px 25px silver;
+}
+
+.clinic-card:nth-child(3) .rank-badge::before {
+  background: #c54f00; /* Bronze */
+  box-shadow: 0 0px 100px 25px #cd7f32;
+}
+
+.clinic-card:nth-child(n+4) .rank-badge {
+  color: black;
+  background-color: #eee;
+}

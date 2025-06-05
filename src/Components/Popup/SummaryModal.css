@@ -1,0 +1,271 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    min-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.cart-items-summary {
+    margin-bottom: 1.5rem;
+}
+
+.cart-items-summary h4 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.items-table th,
+.items-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.items-table th {
+    background: #f9fafb;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.items-table td {
+    color: #555;
+}
+
+.user-info {
+    margin-bottom: 1.5rem;
+}
+
+.user-info h4 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.user-info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.user-info-row label {
+    font-weight: 500;
+    color: #333;
+    width: 30%;
+}
+
+.user-info-row span,
+.user-info-row input {
+    width: 65%;
+    color: #555;
+}
+
+.user-info-row input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.order-pricing {
+    margin-bottom: 1.5rem;
+}
+
+.order-pricing h4 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.summary-table th,
+.summary-table td {
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.summary-table th {
+    font-weight: 500;
+    color: #333;
+    width: 40%;
+}
+
+.summary-table td {
+    color: #555;
+}
+
+.tip-input {
+    width: 100px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cancel-button {
+    background: #fff;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 0.6rem 1.25rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.cancel-button:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.confirm-button {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.confirm-button:hover {
+    background: #0d62c9;
+}
+
+.confirm-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.edit-button {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    transition: all 0.3s;
+}
+
+.edit-button:hover {
+    background: #0d62c9;
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .items-table th,
+    .items-table td {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+
+    .user-info-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .user-info-row label,
+    .user-info-row span,
+    .user-info-row input {
+        width: 100%;
+    }
+
+    .summary-table th,
+    .summary-table td {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .edit-actions {
+        flex-direction: column;
+    }
+
+    .cancel-button,
+    .confirm-button,
+    .edit-button {
+        width: 100%;
+        text-align: center;
+    }
+}

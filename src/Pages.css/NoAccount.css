@@ -1,0 +1,80 @@
+/* NoAccount.css */
+.no-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Reduced by 10% from 80vh */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .27s ease-in-out forwards; /* Reduced by 10% from .3s */
+}
+
+.no-account-message {
+    margin-top: 4rem; /* Reduced by 10% from 10rem */
+    padding: 2.7rem; /* Reduced by 10% from 3rem */
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    box-shadow: 0 1.8px 90px 13.5px rgba(0, 0, 0, 0.3); /* Reduced by 10% from 2px 100px 15px */
+    text-align: center;
+    max-width: 495px; /* Reduced by 10% from 550px */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(18px); /* Reduced by 10% from 20px */
+    animation: fadeInUp .27s ease-in-out 0.09s forwards; /* Reduced by 10% from .3s and 0.1s */
+    background-color: #ffffffc6;
+}
+
+.no-account-message h2 {
+    color: #153861;
+    margin-bottom: 27px; /* Reduced by 10% from 30px */
+}
+
+.no-account-message p {
+    margin-bottom: 18px; /* Reduced by 10% from 20px */
+    color: #585656;
+}
+
+.no-account-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 45px; /* Reduced by 10% from 50px */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn .27s ease-in-out .27s forwards; /* Reduced by 10% from .3s and .3s */
+}
+
+.no-account-button {
+    background-color: #20579a;
+    color: whitesmoke;
+    font-size: 13.5px; /* Reduced by 10% from 15px */
+    padding: 9px 40.5px; /* Reduced by 10% from 10px 45px */
+    border: 1px solid transparent;
+    border-radius: 18px; /* Reduced by 10% from 20px */
+    font-weight: 720; /* Reduced by 10% from 800 */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .36s ease-in-out; /* Reduced by 10% from .4s */
+    box-shadow: 0px 0px 90px 13.5px rgba(0, 0, 0, 0.1); /* Reduced by 10% from 100px 15px */
+    margin-top: 1.08rem; /* Reduced by 10% from 1.2rem */
+}
+
+.no-account-button:hover {
+    background-color: #0f3d6b;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px); /* Reduced by 10% from 20px */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
