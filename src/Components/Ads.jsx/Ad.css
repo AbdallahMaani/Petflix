@@ -26,7 +26,7 @@
   .ad-content {
     position: absolute;
     color: white;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1.4rem;
     border-radius: 20px;
     backdrop-filter: blur(18px);
     background: rgba(0, 0, 0, 0.338);
@@ -35,7 +35,7 @@
     }
   
   .ad-content h1 {
-    font-size: 2.4em;
+    font-size: 2.25em;
     font-weight: bolder;
     margin-bottom: 1.4rem;
     opacity: 0; /* Initially hidden */
@@ -45,7 +45,7 @@
   }
 
   .ad-content h2 {
-    font-size: 1.5em;
+    font-size: 1.35em;
     font-weight: bolder;
     color: rgba(240, 240, 228, 0.501);
     margin-bottom: 1rem;
@@ -55,7 +55,7 @@
 
   
   .ad-content p {
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height: 1.5;
     opacity: 0; /* Initially hidden */
     animation: fadeInUp .5s ease-in-out forwards;
