@@ -63,7 +63,7 @@ const ReportTab = ({ reports, setReports, onReportsUpdated, setSuccessMessage, s
       };
 
       const response = await axios.put(
-        `‏https://localhost:7007/api/Report/${report.reportId}`,
+        `http://localhost:5024/api/Report/${report.reportId}`,
         payload,
         config
       );
@@ -97,7 +97,7 @@ const ReportTab = ({ reports, setReports, onReportsUpdated, setSuccessMessage, s
     if (window.confirm('Are you sure you want to delete this report?')) {
       try {
         const config = getAuthConfig();
-        await axios.delete(`‏https://localhost:7007/api/Report/${reportId}`, config);
+        await axios.delete(`http://localhost:5024/api/Report/${reportId}`, config);
         setReports(reports.filter(r => r.reportId !== reportId));
         if (onReportsUpdated) onReportsUpdated();
         setSuccessMessage('Report deleted successfully!');

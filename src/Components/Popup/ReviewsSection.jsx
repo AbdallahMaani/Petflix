@@ -12,7 +12,7 @@ const ReviewsSection = ({ reviews, ownerReviews, userId, productId, addReview, s
   const handleSaveClick = async (reviewId) => {
     // Send the updated review content to the backend
     try {
-      const response = await fetch(`‏https://localhost:7007/api/PR_/${reviewId}`, {
+      const response = await fetch(`http://localhost:5024/api/PR_/${reviewId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const ReviewsSection = ({ reviews, ownerReviews, userId, productId, addReview, s
   const handleDeleteClick = async (reviewId) => {
     // Delete the review from the backend
     try {
-      const response = await fetch(`‏https://localhost:7007/api/PR_/${reviewId}`, {
+      const response = await fetch(`http://localhost:5024/api/PR_/${reviewId}`, {
         method: 'DELETE',
       });
 
@@ -54,7 +54,7 @@ const ReviewsSection = ({ reviews, ownerReviews, userId, productId, addReview, s
   const handleAddReview = async () => {
     // Add the review to the backend
     try {
-      const response = await fetch(`‏https://localhost:7007/api/PR_`, {
+      const response = await fetch(`http://localhost:5024/api/PR_`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const ReviewsSection = ({ reviews, ownerReviews, userId, productId, addReview, s
 
   const fetchReviews = async () => {
     try {
-      const response = await fetch(`‏https://localhost:7007/api/PR_/product/${productId}`);
+      const response = await fetch(`http://localhost:5024/api/PR_/product/${productId}`);
       if (response.ok) {
         const data = await response.json();
         setReviews(data);

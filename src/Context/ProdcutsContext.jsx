@@ -55,7 +55,7 @@ const ProductsContext = () => {
       try {
         const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
         if (loggedInUser) {
-          const response = await axios.get(`‏https://localhost:7007/api/User/${loggedInUser.userId}`);
+          const response = await axios.get(`http://localhost:5024/api/User/${loggedInUser.userId}`);
           setCurrentUser(response.data);
         }
       } catch (error) {
@@ -70,7 +70,7 @@ const ProductsContext = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('‏https://localhost:7007/api/Products', {
+        const response = await axios.get('http://localhost:5024/api/Products', {
           headers: { 'Cache-Control': 'no-cache' },
         });
         setProducts(response.data);

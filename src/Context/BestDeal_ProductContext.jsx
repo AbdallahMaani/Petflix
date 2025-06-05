@@ -21,13 +21,13 @@ const BestDeal = () => {
     const fetchBestProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('‏https://localhost:7007/api/Products');
+        const response = await axios.get('http://localhost:5024/api/Products');
         const products = response.data;
         const bestProduct = products.length > 0 ? products[31] : null;
         setBestItem(bestProduct);
 
         if (bestProduct && userId) {
-          const favResponse = await axios.get(`‏https://localhost:7007/api/Favorite/${userId}`);
+          const favResponse = await axios.get(`http://localhost:5024/api/Favorite/${userId}`);
           const favorites = favResponse.data;
           const isFav = favorites.some(fav => fav.itemId === bestProduct.product_id);
           setIsFavorite(isFav);
@@ -48,7 +48,7 @@ const BestDeal = () => {
 
   const fetchCartStatus = async (userId, itemId, itemType) => {
     try {
-      const response = await axios.get(`‏https://localhost:7007/api/Carts/${userId}`, {
+      const response = await axios.get(`http://localhost:5024/api/Carts/${userId}`, {
         headers: { 'Authorization': `Bearer ${loggedInUser?.token}` }
       });
       const cartItems = response.data.cartItems || [];
@@ -72,19 +72,19 @@ const BestDeal = () => {
 
     const itemId = bestItem.product_id;
     try {
-      const response = await axios.get(`‏https://localhost:7007/api/Favorite/${userId}`);
+      const response = await axios.get(`http://localhost:5024/api/Favorite/${userId}`);
       const favorites = response.data;
       const existingFav = favorites.find(fav => fav.itemId === itemId);
 
       if (isFavorite && existingFav) {
-        await axios.delete(`‏https://localhost:7007/api/Favorite?userId=${userId}&itemId=${itemId}`, {
+        await axios.delete(`http://localhost:5024/api/Favorite?userId=${userId}&itemId=${itemId}`, {
           headers: { 'Authorization': `Bearer ${loggedInUser.token}` }
         });
         setIsFavorite(false);
         setErrorMessage('Item removed from favorites.');
       } else if (!isFavorite && !existingFav) {
         const payload = { userId, itemId, productId: itemId };
-        await axios.post('‏https://localhost:7007/api/Favorite', payload, {
+        await axios.post('http://localhost:5024/api/Favorite', payload, {
           headers: { 'Authorization': `Bearer ${loggedInUser.token}` }
         });
         setIsFavorite(true);
@@ -116,7 +116,7 @@ const BestDeal = () => {
     const payload = { itemId, quantity, itemType: 'Product' };
     try {
       await axios.post(
-        `‏https://localhost:7007/api/Carts/${loggedInUser.userId}/items`,
+        `http://localhost:5024/api/Carts/${loggedInUser.userId}/items`,
         payload,
         {
           headers: {
@@ -143,7 +143,7 @@ const BestDeal = () => {
     }
 
     try {
-      const cartResponse = await axios.get(`‏https://localhost:7007/api/Carts/${loggedInUser.userId}`, {
+      const cartResponse = await axios.get(`http://localhost:5024/api/Carts/${loggedInUser.userId}`, {
         headers: { 'Authorization': `Bearer ${loggedInUser.token}` }
       });
       const cartItems = cartResponse.data.cartItems || [];
@@ -155,7 +155,7 @@ const BestDeal = () => {
         return;
       }
 
-      await axios.delete(`‏https://localhost:7007/api/Carts/${loggedInUser.userId}/items/${cartItem.cartItemId}`, {
+      await axios.delete(`http://localhost:5024/api/Carts/${loggedInUser.userId}/items/${cartItem.cartItemId}`, {
         headers: { 'Authorization': `Bearer ${loggedInUser.token}` }
       });
       setIsInCart(false);

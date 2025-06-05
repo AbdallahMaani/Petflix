@@ -46,13 +46,13 @@ const Report = () => {
         let endpoint = '';
         switch (targetTypeStr) {
           case 'User':
-            endpoint = `‏https://localhost:7007/api/User/${targetId}`;
+            endpoint = `http://localhost:5024/api/User/${targetId}`;
             break;
           case 'Animal':
-            endpoint = `‏https://localhost:7007/api/Animal/${targetId}`;
+            endpoint = `http://localhost:5024/api/Animal/${targetId}`;
             break;
           case 'Product':
-            endpoint = `‏https://localhost:7007/api/Product/${targetId}`;
+            endpoint = `http://localhost:5024/api/Product/${targetId}`;
             break;
           default:
             throw new Error('Invalid target type');
@@ -123,7 +123,7 @@ const Report = () => {
         Content: `Reason: ${report.reportReason}\nDetails: ${report.content}`
       };
 
-      const response = await axios.post('‏https://localhost:7007/api/Report', payload, {
+      const response = await axios.post('http://localhost:5024/api/Report', payload, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedInUser.token}`

@@ -27,7 +27,7 @@ const ProductsTab = ({ products, productReviews, onDelete, onDeleteReview, setSu
       try {
         const responses = await Promise.all(
           idsToFetch.map(id =>
-            axios.get(`‏https://localhost:7007/api/User/${id}`).then(res => ({
+            axios.get(`http://localhost:5024/api/User/${id}`).then(res => ({
               id,
               name: res.data.name || res.data.username || `User ${id}`,
             })).catch(() => ({

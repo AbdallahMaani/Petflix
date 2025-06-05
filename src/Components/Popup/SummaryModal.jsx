@@ -78,7 +78,7 @@ const SummaryModal = ({ totalPrice, cartItems, onClose, onConfirm }) => {
     };
 
     try {
-      await axios.put(`‏https://localhost:7007/api/User/${userData.userId}`, updatedUserData, {
+      await axios.put(`http://localhost:5024/api/User/${userData.userId}`, updatedUserData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

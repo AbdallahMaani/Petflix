@@ -13,7 +13,7 @@ const ForgotPassword = () => {
     setMessage('Sending email...'); // Initial message
 
     try {
-      const response = await fetch('‏https://localhost:7007/api/User/ForgotPassword', { // Replace with your API endpoint
+      const response = await fetch('http://localhost:5024/api/User/ForgotPassword', { // Replace with your API endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

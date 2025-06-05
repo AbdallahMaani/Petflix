@@ -27,7 +27,7 @@ const Cart = () => {
     const fetchCartItems = async () => {
       setLoading(true);
       try {
-        const cartResponse = await axios.get(`‏https://localhost:7007/api/Carts/${userId}`);
+        const cartResponse = await axios.get(`http://localhost:5024/api/Carts/${userId}`);
         const cartData = cartResponse.data;
 
         if (!cartData.cartItems || cartData.cartItems.length === 0) {
@@ -40,11 +40,11 @@ const Cart = () => {
             let itemResponse;
             let ownerResponse;
             try {
-              itemResponse = await axios.get(`‏https://localhost:7007/api/Animals/${item.itemId}`);
+              itemResponse = await axios.get(`http://localhost:5024/api/Animals/${item.itemId}`);
             } catch (animalErr) {
               console.error(`Failed to fetch animal details for item ${item.itemId}:`, animalErr);
               try {
-                itemResponse = await axios.get(`‏https://localhost:7007/api/Products/${item.itemId}`);
+                itemResponse = await axios.get(`http://localhost:5024/api/Products/${item.itemId}`);
               } catch (productErr) {
                 console.error(`Failed to fetch product details for item ${item.itemId}:`, productErr);
                 return { ...item, name: 'Item Not Found' };
@@ -57,7 +57,7 @@ const Cart = () => {
             }
 
             try {
-              ownerResponse = await axios.get(`‏https://localhost:7007/api/User/${itemResponse.data.userId}`);
+              ownerResponse = await axios.get(`http://localhost:5024/api/User/${itemResponse.data.userId}`);
             } catch (ownerErr) {
               console.error(`Failed to fetch owner details for user ${itemResponse.data.userId}:`, ownerErr);
               return { ...item, name: itemResponse.data.name || 'Item Not Found', ownerName: 'Unknown', location: 'N/A', availableDays: 'N/A', availableHours: 'N/A', delivery_method: 'N/A' };
@@ -115,7 +115,7 @@ const Cart = () => {
     const itemToUpdate = updatedItems.find((item) => item.cartItemId === cartItemId);
 
     try {
-      await axios.put(`‏https://localhost:7007/api/Carts/${userId}/items/${cartItemId}`, {
+      await axios.put(`http://localhost:5024/api/Carts/${userId}/items/${cartItemId}`, {
         quantity: itemToUpdate.quantity,
       });
     } catch (err) {
@@ -158,7 +158,7 @@ const Cart = () => {
       console.log("Submitting order:", orderData);
 
       const response = await axios.post(
-        `‏https://localhost:7007/api/Order`,
+        `http://localhost:5024/api/Order`,
         orderData,
         {
           headers: {
@@ -169,7 +169,7 @@ const Cart = () => {
       );
 
       if (response.status === 201) {
-        await axios.delete(`‏https://localhost:7007/api/Carts/${userId}/items`, {
+        await axios.delete(`http://localhost:5024/api/Carts/${userId}/items`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -192,7 +192,7 @@ const Cart = () => {
 
   const handleViewItem = async (item) => {
     try {
-      const endpoint = item.itemId && (await axios.get(`‏https://localhost:7007/api/Animals/${item.itemId}`).catch(() => axios.get(`‏https://localhost:7007/api/Products/${item.itemId}`))).then(res => res.data);
+      const endpoint = item.itemId && (await axios.get(`http://localhost:5024/api/Animals/${item.itemId}`).catch(() => axios.get(`http://localhost:5024/api/Products/${item.itemId}`))).then(res => res.data);
       setSelectedItem(endpoint || item);
       setShowPopup(true);
     } catch (err) {
@@ -214,7 +214,7 @@ const Cart = () => {
 
   const confirmDelete = async () => {
     try {
-      await axios.delete(`‏https://localhost:7007/api/Carts/${userId}/items/${itemToDelete}`, {
+      await axios.delete(`http://localhost:5024/api/Carts/${userId}/items/${itemToDelete}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -239,7 +239,7 @@ const Cart = () => {
     if (!cartItem) return;
 
     try {
-      await axios.delete(`‏https://localhost:7007/api/Carts/${userId}/items/${cartItem.cartItemId}`, {
+      await axios.delete(`http://localhost:5024/api/Carts/${userId}/items/${cartItem.cartItemId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -259,7 +259,7 @@ const Cart = () => {
     try {
       const itemType = selectedItem.inferredType || (selectedItem.gender !== undefined ? 'Animal' : 'Product');
       await axios.post(
-        `‏https://localhost:7007/api/Carts/${userId}/items`,
+        `http://localhost:5024/api/Carts/${userId}/items`,
         { itemId, quantity, itemType },
         {
           headers: {
@@ -268,7 +268,7 @@ const Cart = () => {
           }
         }
       );
-      const updatedCart = await axios.get(`‏https://localhost:7007/api/Carts/${userId}`);
+      const updatedCart = await axios.get(`http://localhost:5024/api/Carts/${userId}`);
       setCartItems(updatedCart.data.cartItems.map(item => ({
         ...item,
         name: selectedItem.name,
@@ -306,7 +306,7 @@ const Cart = () => {
 
   const confirmClearCart = async () => {
     try {
-      await axios.delete(`‏https://localhost:7007/api/Carts/${userId}/clear`, {
+      await axios.delete(`http://localhost:5024/api/Carts/${userId}/clear`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

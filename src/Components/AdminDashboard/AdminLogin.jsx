@@ -16,7 +16,7 @@ const AdminLogin = () => {
     setError(null);
 
     try {
-      const response = await fetch('‏https://localhost:7007/api/User', {
+      const response = await fetch('http://localhost:5024/api/User', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

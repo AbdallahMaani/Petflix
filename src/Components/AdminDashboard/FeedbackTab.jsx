@@ -67,7 +67,7 @@ const FeedbackTab = ({ feedbacks, setFeedbacks, setSuccessMessage, setErrorMessa
       };
 
       await axios.patch(
-        `‏https://localhost:7007/api/Feedback/${feedback.feedbackId}/status`,
+        `http://localhost:5024/api/Feedback/${feedback.feedbackId}/status`,
         payload,
         config
       );
@@ -98,7 +98,7 @@ const FeedbackTab = ({ feedbacks, setFeedbacks, setSuccessMessage, setErrorMessa
     if (window.confirm('Are you sure you want to delete this feedback?')) {
       try {
         const config = getAuthConfig();
-        await axios.delete(`‏https://localhost:7007/api/Feedback/${feedbackId}`, config);
+        await axios.delete(`http://localhost:5024/api/Feedback/${feedbackId}`, config);
         setFeedbacks(feedbacks.filter(f => f.feedbackId !== feedbackId));
         setSuccessMessage('Feedback deleted successfully!');
         setTimeout(() => setSuccessMessage(''), 3000);

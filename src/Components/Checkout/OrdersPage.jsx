@@ -70,7 +70,7 @@ const OrdersPage = () => {
   useEffect(() => {
     const fetchUserLocation = async () => {
       try {
-        const userResponse = await axios.get(`‏https://localhost:7007/api/User/${userId}`, {
+        const userResponse = await axios.get(`http://localhost:5024/api/User/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ const OrdersPage = () => {
 
       try {
         setLoading(true);
-        const response = await axios.get(`‏https://localhost:7007/api/Order/user/${userId}`, {
+        const response = await axios.get(`http://localhost:5024/api/Order/user/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ const OrdersPage = () => {
               order.orderItems.map(async (item) => {
                 let itemDetails = {};
                 try {
-                  const animalRes = await axios.get(`‏https://localhost:7007/api/Animals/${item.itemId}`, {
+                  const animalRes = await axios.get(`http://localhost:5024/api/Animals/${item.itemId}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                   });
                   itemDetails = {
@@ -127,7 +127,7 @@ const OrdersPage = () => {
                   };
                 } catch (animalErr) {
                   try {
-                    const productRes = await axios.get(`‏https://localhost:7007/api/Products/${item.itemId}`, {
+                    const productRes = await axios.get(`http://localhost:5024/api/Products/${item.itemId}`, {
                       headers: { 'Authorization': `Bearer ${token}` }
                     });
                     itemDetails = {
@@ -152,7 +152,7 @@ const OrdersPage = () => {
 
                 let ownerDetails = {};
                 try {
-                  const ownerRes = await axios.get(`‏https://localhost:7007/api/User/${item.ownerId}`, {
+                  const ownerRes = await axios.get(`http://localhost:5024/api/User/${item.ownerId}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                   });
                   ownerDetails = ownerRes.data;
@@ -198,7 +198,7 @@ const OrdersPage = () => {
                   order.orderItems.map(async (item) => {
                     let itemDetails = {};
                     try {
-                      const animalRes = await axios.get(`‏https://localhost:7007/api/Animals/${item.itemId}`, {
+                      const animalRes = await axios.get(`http://localhost:5024/api/Animals/${item.itemId}`, {
                         headers: { 'Authorization': `Bearer ${token}` }
                       });
                       itemDetails = {
@@ -211,7 +211,7 @@ const OrdersPage = () => {
                       };
                     } catch (animalErr) {
                       try {
-                        const productRes = await axios.get(`‏https://localhost:7007/api/Products/${item.itemId}`, {
+                        const productRes = await axios.get(`http://localhost:5024/api/Products/${item.itemId}`, {
                           headers: { 'Authorization': `Bearer ${token}` }
                         });
                         itemDetails = {
@@ -236,7 +236,7 @@ const OrdersPage = () => {
 
                     let ownerDetails = {};
                     try {
-                      const ownerRes = await axios.get(`‏https://localhost:7007/api/User/${item.ownerId}`, {
+                      const ownerRes = await axios.get(`http://localhost:5024/api/User/${item.ownerId}`, {
                         headers: { 'Authorization': `Bearer ${token}` }
                       });
                       ownerDetails = ownerRes.data;
@@ -297,7 +297,7 @@ const OrdersPage = () => {
       }
 
       await axios.patch(
-        `‏https://localhost:7007/api/Order/${orderId}/status`,
+        `http://localhost:5024/api/Order/${orderId}/status`,
         "Canceled",
         {
           headers: {
@@ -330,7 +330,7 @@ const OrdersPage = () => {
       }
 
       await axios.patch(
-        `‏https://localhost:7007/api/Order/${orderId}/status`,
+        `http://localhost:5024/api/Order/${orderId}/status`,
         "Delivered",
         {
           headers: {

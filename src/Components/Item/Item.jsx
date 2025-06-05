@@ -35,7 +35,7 @@ const Item = memo((props) => {
   const fetchInitialData = useCallback(async (userId, id, type) => {
     try {
       // Fetch favorite status
-      const favResponse = await axios.get(`‏https://localhost:7007/api/Favorite/${userId}`);
+      const favResponse = await axios.get(`http://localhost:5024/api/Favorite/${userId}`);
       const favorites = favResponse.data;
       const isFavorited = favorites.some((fav) =>
         fav.itemId === id &&
@@ -44,7 +44,7 @@ const Item = memo((props) => {
       setIsFavorite(isFavorited);
 
       // Fetch cart status
-      const cartResponse = await axios.get(`‏https://localhost:7007/api/Carts/${userId}`, {
+      const cartResponse = await axios.get(`http://localhost:5024/api/Carts/${userId}`, {
         headers: { 'Authorization': `Bearer ${loggedInUser?.token}` }
       });
       const cartItems = cartResponse.data.cartItems || [];
@@ -107,7 +107,7 @@ const Item = memo((props) => {
 
     try {
       const userId = loggedInUser.userId;
-      const response = await axios.get(`‏https://localhost:7007/api/Favorite/${userId}`);
+      const response = await axios.get(`http://localhost:5024/api/Favorite/${userId}`);
       const favorites = response.data;
       const existingFav = favorites.find((fav) =>
         fav.itemId === itemId &&
@@ -115,7 +115,7 @@ const Item = memo((props) => {
       );
 
       if (isFavorite && existingFav) {
-        await axios.delete(`‏https://localhost:7007/api/Favorite?userId=${userId}&itemId=${itemId}`, {
+        await axios.delete(`http://localhost:5024/api/Favorite?userId=${userId}&itemId=${itemId}`, {
           headers: { 'Authorization': `Bearer ${loggedInUser.token}` }
         });
         setIsFavorite(false);
@@ -130,7 +130,7 @@ const Item = memo((props) => {
           itemId: itemId,
           ...(itemType === 'Animal' ? { animalId: itemId } : { productId: itemId }),
         };
-        await axios.post(`‏https://localhost:7007/api/Favorite`, favoriteData, {
+        await axios.post(`http://localhost:5024/api/Favorite`, favoriteData, {
           headers: { 'Authorization': `Bearer ${loggedInUser.token}` }
         });
         setIsFavorite(true);
@@ -190,7 +190,7 @@ const Item = memo((props) => {
         return;
       }
 
-      const apiUrl = `‏https://localhost:7007/api/${itemType}s/${itemId}`;
+      const apiUrl = `http://localhost:5024/api/${itemType}s/${itemId}`;
       await axios.delete(apiUrl, {
         headers: {
           Authorization: `Bearer ${loggedInUser.token}`,
@@ -237,7 +237,7 @@ const Item = memo((props) => {
   
     try {
       await axios.post(
-        `‏https://localhost:7007/api/Carts/${loggedInUser.userId}/items`,
+        `http://localhost:5024/api/Carts/${loggedInUser.userId}/items`,
         { itemId, quantity, itemType },
         {
           headers: {
@@ -267,7 +267,7 @@ const Item = memo((props) => {
     }
 
     try {
-      const cartResponse = await axios.get(`‏https://localhost:7007/api/Carts/${loggedInUser.userId}`, {
+      const cartResponse = await axios.get(`http://localhost:5024/api/Carts/${loggedInUser.userId}`, {
         headers: { 'Authorization': `Bearer ${loggedInUser.token}` }
       });
       const cartItems = cartResponse.data.cartItems || [];
@@ -279,7 +279,7 @@ const Item = memo((props) => {
         return;
       }
 
-      await axios.delete(`‏https://localhost:7007/api/Carts/${loggedInUser.userId}/items/${cartItem.cartItemId}`, {
+      await axios.delete(`http://localhost:5024/api/Carts/${loggedInUser.userId}/items/${cartItem.cartItemId}`, {
         headers: { 'Authorization': `Bearer ${loggedInUser.token}` }
       });
       setIsInCart(false);

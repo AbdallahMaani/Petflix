@@ -11,7 +11,7 @@ const Popular2 = forwardRef((props, ref) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('‏https://localhost:7007/api/Products');
+        const response = await axios.get('http://localhost:5024/api/Products');
         const allProducts = response.data;
         const totalProducts = allProducts.length;
         const startIndex = Math.max(0, totalProducts - 8);
