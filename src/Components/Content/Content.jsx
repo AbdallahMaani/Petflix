@@ -19,22 +19,21 @@ const Hero = ({ user, onPopularClick, onPopular2Click }) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setAnimate(false);
-      setLoading(false); // Set loading to false after animation
-    }, 1000); // Match animation duration
+      if (!user) setLoading(false); // Only set loading to false if no user
+    }, 1000);
 
     const intervalId = setInterval(() => {
       goToNext();
     }, 10000);
 
-    // Trigger animation on component mount (refresh) and on image change
     setAnimate(true);
-    setLoading(true); // Set loading to true when image changes
+    if (!user) setLoading(true); // Only set loading to true if no user
 
     return () => {
       clearInterval(intervalId);
       clearTimeout(timeoutId);
     };
-  }, [currentImageIndex]); // Add currentImageIndex as a dependency
+  }, [currentImageIndex, user]); // Add user as dependency
 
   const goToNext = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
@@ -44,8 +43,8 @@ const Hero = ({ user, onPopularClick, onPopular2Click }) => {
     <div
       className={`hero ${animate ? 'fade-in-right' : ' '}`}
       style={{
-        backgroundImage: loading ? 'none' : `url(${images[currentImageIndex]})`, // Hide background while loading
-        backgroundColor: loading ? '#f0f0f0' : 'transparent', // Optional: Add a placeholder background color
+        backgroundImage: (!loading || user) ? `url(${images[currentImageIndex]})` : 'none',
+        backgroundColor: (!loading || user) ? 'transparent' : '#f0f0f0',
       }}
     >
       <div className="hero-content-container">

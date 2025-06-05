@@ -63,16 +63,16 @@ const Home = () => {
     });
   };
 
-  if (loading) return <div>Loading user data...</div>;
+  if (loading) return <div></div>;
   if (error) return <div>Error fetching user data: {error}</div>;
 
   return (
     <>
       <div>
-        <Suspense fallback={<div>Loading Hero...</div>}>
+        <Suspense fallback={<div></div>}>
           <HeroSplash user={user} onExploreClick={scrollToAnimalAd} />
         </Suspense>
-        <Suspense fallback={<div>Loading Content...</div>}>
+        <Suspense fallback={<div></div>}>
           <Content user={user} onPopularClick={scrollToPopular} onPopular2Click={scrollToPopular2}/>
         </Suspense>
         <BestUsers/>
