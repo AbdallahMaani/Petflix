@@ -123,9 +123,7 @@ const HeroSplash = ({ user, onExploreClick }) => {
   const nextSlide = useCallback(() => goToSlide('right'), [goToSlide]);
   const prevSlide = useCallback(() => goToSlide('left'), [goToSlide]);
 
-  if (loading) {
-    return <div className="hero-container2">Loading slides...</div>; // Or a more sophisticated loader
-  }
+  
 
   return (
     <div className={`hero-container2 ${isVisible2 ? 'visible2' : ''}`}>
