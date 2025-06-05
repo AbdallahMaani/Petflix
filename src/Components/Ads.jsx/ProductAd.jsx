@@ -11,7 +11,7 @@ const ProductAd = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [animate, setAnimate] = useState(false);
   const intervalRef = useRef(null);
-  const SLIDE_INTERVAL = 5000;
+  const SLIDE_INTERVAL = 9000;
   const images = [coverImage, productAd2, productAd3, productAd4];
 
   const startInterval = () => {
@@ -28,7 +28,14 @@ const ProductAd = () => {
         clearInterval(intervalRef.current);
       }
     };
+    // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    setAnimate(true);
+    const timeoutId = setTimeout(() => setAnimate(false), 1000);
+    return () => clearTimeout(timeoutId);
+  }, [currentImageIndex]);
 
   const handleButtonClick = () => {
     window.scrollTo(0, 0);
@@ -36,16 +43,12 @@ const ProductAd = () => {
   };
 
   const goToPrevious = () => {
-    setAnimate(true);
     setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-    setTimeout(() => setAnimate(false), 500);
     startInterval(); // Reset timer
   };
 
   const goToNext = () => {
-    setAnimate(true);
     setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    setTimeout(() => setAnimate(false), 500);
     startInterval(); // Reset timer
   };
 

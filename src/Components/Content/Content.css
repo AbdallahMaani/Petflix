@@ -145,7 +145,7 @@
   }
   
   .fade-in-right {
-    animation: fadeInRight 1.1s ease-in-out;
+    animation: fadeInRight .75s ease-in-out;
   }
   
   @keyframes fadeInRight {

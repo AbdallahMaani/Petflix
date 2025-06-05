@@ -120,14 +120,6 @@
     backdrop-filter: blur(10px);
   }
   
-  .slider-button.prev {
-    /* Remove left positioning */
-  }
-  
-  .slider-button.next {
-    /* Remove right positioning */
-  }
-
   
   .fade-in-right {
     animation: fadeInRight 0.5s ease-in-out;

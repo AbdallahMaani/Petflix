@@ -12,8 +12,8 @@ const AnimalAd = ({ scrollToAnimals }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [animate, setAnimate] = useState(false);
   const intervalRef = useRef(null);
-  const SLIDE_INTERVAL = 5000;
-  const images = [  catAd, catAd2, hourseAd, birdAd];
+  const SLIDE_INTERVAL = 8000;
+  const images = [catAd, catAd2, hourseAd, birdAd];
   const [user, setUser] = useState({ name: '' });
 
   const startInterval = () => {
@@ -45,22 +45,24 @@ const AnimalAd = ({ scrollToAnimals }) => {
     };
   }, [location.state]);
 
+  useEffect(() => {
+    setAnimate(true);
+    const timeoutId = setTimeout(() => setAnimate(false), 1000);
+    return () => clearTimeout(timeoutId);
+  }, [currentImageIndex]);
+
   const handleButtonClick = () => {
     navigate('/products');
     window.scrollTo({ top: 0 });
   };
 
   const goToPrevious = () => {
-    setAnimate(true);
     setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-    setTimeout(() => setAnimate(false), 500);
     startInterval(); // Reset timer
   };
 
   const goToNext = () => {
-    setAnimate(true);
     setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    setTimeout(() => setAnimate(false), 500);
     startInterval(); // Reset timer
   };
 
