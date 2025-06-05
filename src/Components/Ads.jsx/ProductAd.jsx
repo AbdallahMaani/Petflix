@@ -71,9 +71,9 @@ const ProductAd = () => {
         </div>
       </div>
       <div className="ad-content">
-        <h1>Healthy Products for Your Feline Friend!</h1>
-        <h2>Find The Best Products For Your Lovely Pet!</h2>
-        <p>Explore our wide range of cat food, toys, and accessories. Keep your kitty happy and healthy!</p>
+        <h1>Healthy Products for Your Lovely pets!</h1>
+        <h2>Find The Best Products For Your  Feline Friend!</h2>
+        <p>Explore our wide range of cat food, toys, and accessories.</p><p> Keep your kitty happy and healthy!</p>
         <button className="ad-button" onClick={handleButtonClick}>
           Discover All Products
         </button>
