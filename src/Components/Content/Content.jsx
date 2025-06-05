@@ -20,7 +20,7 @@ const Hero = ({ user, onPopularClick, onPopular2Click }) => {
 
     const intervalId = setInterval(() => {
       goToNext();
-    }, 10000);
+    }, 7000);
 
     return () => {
       clearInterval(intervalId);

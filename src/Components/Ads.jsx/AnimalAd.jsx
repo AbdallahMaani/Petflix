@@ -14,7 +14,7 @@ const AnimalAd = forwardRef(({ scrollToAnimals }, ref) => {
   const [animate, setAnimate] = useState(false);
   const [user, setUser] = useState({ name: '' });
   const intervalRef = useRef(null);
-  const SLIDE_INTERVAL = 9999;
+  const SLIDE_INTERVAL = 8500;
   const images = [coverImage, catAd, catAd2, hourseAd, birdAd];
 
   useEffect(() => {

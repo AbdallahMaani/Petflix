@@ -11,7 +11,7 @@ const ProductAd = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [animate, setAnimate] = useState(false);
   const intervalRef = useRef(null);
-  const SLIDE_INTERVAL = 9000;
+  const SLIDE_INTERVAL = 10500;
   const images = [coverImage, productAd2, productAd3, productAd4];
 
   const startInterval = () => {

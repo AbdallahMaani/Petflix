@@ -170,9 +170,7 @@ const FeedbackButton = () => {
                 </>
               )
             ) : (
-              <>
-                <NoAccount />
-              </>
+              <NoAccount onGuestMode={() => { setIsOpen(false); window.location.href = '/'; }} />
             )}
           </div>
         </div>
