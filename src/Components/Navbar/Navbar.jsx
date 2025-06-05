@@ -280,7 +280,7 @@ export const Navbar = () => {
         </li>
       </ul>
 
-      <div className="dark-mode-switch">
+      {/*<div className="dark-mode-switch">
         <label htmlFor="dark-mode-toggle">Dark Mode</label>
         <div className="switch">
           <input
@@ -291,7 +291,7 @@ export const Navbar = () => {
           />
           <span className="slider"></span>
         </div>
-      </div>
+      </div>*/}
 
       <div className="nav-login-cart">
         <FontAwesomeIcon
