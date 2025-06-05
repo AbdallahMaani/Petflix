@@ -130,7 +130,7 @@ const AddProduct = () => {
     try {
       const user = JSON.parse(localStorage.getItem('loggedInUser'));
       
-      const response = await axios.post('http://localhost:5024/api/Products', submissionData, {
+      const response = await axios.post('‏https://localhost:7007/api/Products', submissionData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`,

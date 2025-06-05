@@ -64,12 +64,12 @@ function App() {
     const fetchData = async () => {
       try {
         const [usersRes, animalsRes, productsRes, feedbacksRes, animalReviewsRes, productReviewsRes] = await Promise.all([
-          axios.get('http://localhost:5024/api/User'),
-          axios.get('http://localhost:5024/api/Animals'),
-          axios.get('http://localhost:5024/api/Products'),
-          axios.get('http://localhost:5024/api/Feedback'),
-          axios.get('http://localhost:5024/api/AR_'),
-          axios.get('http://localhost:5024/api/PR_'),
+          axios.get('‏https://localhost:7007/api/User'),
+          axios.get('‏https://localhost:7007/api/Animals'),
+          axios.get('‏https://localhost:7007/api/Products'),
+          axios.get('‏https://localhost:7007/api/Feedback'),
+          axios.get('‏https://localhost:7007/api/AR_'),
+          axios.get('‏https://localhost:7007/api/PR_'),
         ]);
         
         setUsers(usersRes.data);
@@ -84,12 +84,12 @@ function App() {
         const ordersData = {};
         for (const user of usersRes.data) {
           try {
-            const cartRes = await axios.get(`http://localhost:5024/api/Carts/${user.userId}`);
+            const cartRes = await axios.get(`‏https://localhost:7007/api/Carts/${user.userId}`);
             cartsData[user.userId] = cartRes.data || null;
           } catch (cartErr) {
             cartsData[user.userId] = null;
           }
-          const ordersRes = await axios.get(`http://localhost:5024/api/Order/user/${user.userId}`);
+          const ordersRes = await axios.get(`‏https://localhost:7007/api/Order/user/${user.userId}`);
           ordersData[user.userId] = ordersRes.data || [];
         }
         setCarts(cartsData);
@@ -105,7 +105,7 @@ function App() {
   // Handle delete operations
   const handleDelete = async (type, id) => {
     try {
-      await axios.delete(`http://localhost:5024/api/${type}/${id}`);
+      await axios.delete(`‏https://localhost:7007/api/${type}/${id}`);
       if (type === 'User') {
         setUsers(users.filter(user => user.userId !== id));
         setCarts(prev => {
@@ -129,7 +129,7 @@ function App() {
 
   const handleDeleteReview = async (type, reviewId) => {
     try {
-      await axios.delete(`http://localhost:5024/api/${type}/${reviewId}`);
+      await axios.delete(`‏https://localhost:7007/api/${type}/${reviewId}`);
       if (type === 'AR_') setAnimalReviews(animalReviews.filter(review => review.animalReviewId !== reviewId));
       if (type === 'PR_') setProductReviews(productReviews.filter(review => review.productReviewId !== reviewId));
       setError(null);
@@ -140,7 +140,7 @@ function App() {
 
   const handleDeleteCart = async (userId, cartId) => {
     try {
-      await axios.delete(`http://localhost:5024/api/Carts/${cartId}`);
+      await axios.delete(`‏https://localhost:7007/api/Carts/${cartId}`);
       setCarts(prev => ({
         ...prev,
         [userId]: null,

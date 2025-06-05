@@ -93,7 +93,7 @@ const LoginSignup = () => {
   const handleSignIn = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch('http://localhost:5024/api/User');
+    const response = await fetch('‏https://localhost:7007/api/User');
     if (!response.ok) throw new Error('Failed to fetch users');
     const users = await response.json();
 
@@ -154,7 +154,7 @@ const LoginSignup = () => {
         products: [],
       };
 
-      const response = await fetch('http://localhost:5024/api/User', {
+      const response = await fetch('‏https://localhost:7007/api/User', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend),

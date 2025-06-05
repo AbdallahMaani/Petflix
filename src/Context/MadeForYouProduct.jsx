@@ -12,7 +12,7 @@ const MadeForYouProduct = forwardRef((props, ref) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5024/api/Products');
+        const response = await axios.get('‏https://localhost:7007/api/Products');
         const allProducts = response.data;
         const totalProducts = allProducts.length;
         const startIndex = Math.max(0, totalProducts - 8); // Get the last 8 products
@@ -30,7 +30,7 @@ const MadeForYouProduct = forwardRef((props, ref) => {
       try {
         const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
         if (loggedInUser) {
-          const userResponse = await axios.get(`http://localhost:5024/api/User/${loggedInUser.userId}`);
+          const userResponse = await axios.get(`‏https://localhost:7007/api/User/${loggedInUser.userId}`);
           setUser(userResponse.data);
         }
       } catch (err) {

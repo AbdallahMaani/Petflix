@@ -138,13 +138,13 @@ const Popup = ({
 
   // Fetch animal and product data
   useEffect(() => {
-    fetch('http://localhost:5024/api/Animals')
+    fetch('‏https://localhost:7007/api/Animals')
       .then(response => response.json())
       .then(data => {
         setAnimalData(data);
         const currentAnimal = data.find(animal => animal.animal_title === currentItem);
         if (currentAnimal) {
-          fetch(`http://localhost:5024/api/User/${currentAnimal.userId}`)
+          fetch(`‏https://localhost:7007/api/User/${currentAnimal.userId}`)
             .then(response => response.json())
             .then(userData => setUserData(userData))
             .catch(error => console.error('Error fetching user data:', error));
@@ -152,13 +152,13 @@ const Popup = ({
       })
       .catch(error => console.error('Error fetching animal data:', error));
 
-    fetch('http://localhost:5024/api/Products')
+    fetch('‏https://localhost:7007/api/Products')
       .then(response => response.json())
       .then(data => {
         setProductDataState(data);
         const currentProduct = data.find(product => product.product_title === currentItem);
         if (currentProduct) {
-          fetch(`http://localhost:5024/api/User/${currentProduct.userId}`)
+          fetch(`‏https://localhost:7007/api/User/${currentProduct.userId}`)
             .then(response => response.json())
             .then(userData => setUserData(userData))
             .catch(error => console.error('Error fetching user data:', error));
@@ -230,7 +230,7 @@ const Popup = ({
       if (!userId || !itemId || !itemType) return;
 
       try {
-        const response = await axios.get(`http://localhost:5024/api/Favorite/${userId}`, {
+        const response = await axios.get(`‏https://localhost:7007/api/Favorite/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -256,7 +256,7 @@ const Popup = ({
   
     try {
       // Fetch favorite status
-      const favoriteResponse = await axios.get(`http://localhost:5024/api/Favorite/${userId}`, {
+      const favoriteResponse = await axios.get(`‏https://localhost:7007/api/Favorite/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -270,7 +270,7 @@ const Popup = ({
       setIsCurrentFavorite(isFavorited);
   
       // Fetch cart status
-      const cartResponse = await axios.get(`http://localhost:5024/api/Carts/${userId}`, {
+      const cartResponse = await axios.get(`‏https://localhost:7007/api/Carts/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -304,7 +304,7 @@ const Popup = ({
     }
   
     try {
-      const response = await axios.get(`http://localhost:5024/api/Favorite/${userId}`, {
+      const response = await axios.get(`‏https://localhost:7007/api/Favorite/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -317,7 +317,7 @@ const Popup = ({
       );
   
       if (isCurrentFavorite && existingFav) {
-        await axios.delete(`http://localhost:5024/api/Favorite?userId=${userId}&itemId=${itemId}`, {
+        await axios.delete(`‏https://localhost:7007/api/Favorite?userId=${userId}&itemId=${itemId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -333,7 +333,7 @@ const Popup = ({
         };
         console.log('Adding favorite with payload:', favoriteData);
         await axios.post(
-          'http://localhost:5024/api/Favorite',
+          '‏https://localhost:7007/api/Favorite',
           favoriteData,
           {
             headers: {
@@ -365,15 +365,15 @@ const Popup = ({
     if (currentItemDetails) {
       const currentItemId = isAnimal ? currentItemDetails.animal_id : currentItemDetails.product_id;
       const endpoint = isAnimal
-        ? `http://localhost:5024/api/AR_/animal/${currentItemId}`
-        : `http://localhost:5024/api/PR_/product/${currentItemId}`;
+        ? `‏https://localhost:7007/api/AR_/animal/${currentItemId}`
+        : `‏https://localhost:7007/api/PR_/product/${currentItemId}`;
 
       fetch(endpoint)
         .then(response => response.json())
         .then(reviewData => {
           const reviewsWithReviewer = reviewData.map(async (review) => {
             try {
-              const userResponse = await fetch(`http://localhost:5024/api/User/${review.reviewerId}`);
+              const userResponse = await fetch(`‏https://localhost:7007/api/User/${review.reviewerId}`);
               const userData = await userResponse.json();
               return {
                 ...review,
@@ -567,7 +567,7 @@ const Popup = ({
     try {
       const derivedItemType = isAnimal ? 'Animals' : 'Products';
       const currentItemId = itemId;
-      const apiUrl = `http://localhost:5024/api/${derivedItemType}/${currentItemId}`;
+      const apiUrl = `‏https://localhost:7007/api/${derivedItemType}/${currentItemId}`;
       await axios.delete(apiUrl, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -638,7 +638,7 @@ const Popup = ({
     try {
       const derivedItemType = isAnimal ? 'Animals' : 'Products';
       const currentItemId = itemId;
-      const apiUrl = `http://localhost:5024/api/${derivedItemType}/${currentItemId}`;
+      const apiUrl = `‏https://localhost:7007/api/${derivedItemType}/${currentItemId}`;
       
       // Handle picture removal - if the pic array exists but is empty, it means user removed the picture
       const picField = isAnimal ? 'animal_pic' : 'product_pic';
@@ -806,7 +806,7 @@ const Popup = ({
         reviewDate: new Date().toISOString(),
       };
 
-      const response = await fetch(`http://localhost:5024/api/${endpoint}/${reviewId}`, {
+      const response = await fetch(`‏https://localhost:7007/api/${endpoint}/${reviewId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -853,7 +853,7 @@ const Popup = ({
     setShowReviewConfirmation(false);
     try {
       const endpoint = isAnimal ? 'AR_' : 'PR_';
-      const response = await fetch(`http://localhost:5024/api/${endpoint}/${reviewToDelete}`, {
+      const response = await fetch(`‏https://localhost:7007/api/${endpoint}/${reviewToDelete}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -916,7 +916,7 @@ const Popup = ({
         [itemIdField]: itemIdValue,
       };
 
-      const response = await fetch(`http://localhost:5024/api/${endpoint}`, {
+      const response = await fetch(`‏https://localhost:7007/api/${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

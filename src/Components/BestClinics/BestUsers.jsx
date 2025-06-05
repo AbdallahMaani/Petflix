@@ -15,17 +15,17 @@ const BestUsers = () => {
     const fetchTopUsers = async () => {
       try {
         const [usersResponse, animalsResponse, productsResponse] = await Promise.all([
-          axios.get('http://localhost:5024/api/User', {
+          axios.get('‏https://localhost:7007/api/User', {
             headers: {
               'Authorization': `Bearer ${JSON.parse(localStorage.getItem('loggedInUser'))?.token || ''}`,
             },
           }),
-          axios.get('http://localhost:5024/api/Animals', {
+          axios.get('‏https://localhost:7007/api/Animals', {
             headers: {
               'Authorization': `Bearer ${JSON.parse(localStorage.getItem('loggedInUser'))?.token || ''}`,
             },
           }),
-          axios.get('http://localhost:5024/api/Products', {
+          axios.get('‏https://localhost:7007/api/Products', {
             headers: {
               'Authorization': `Bearer ${JSON.parse(localStorage.getItem('loggedInUser'))?.token || ''}`,
             },

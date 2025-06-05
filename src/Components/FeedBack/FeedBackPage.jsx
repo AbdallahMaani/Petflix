@@ -60,7 +60,7 @@ const FeedbackPage = () => {
           throw new Error('User not logged in');
         }
         const response = await axios.get(
-          `http://localhost:5024/api/Feedback/user/${loggedInUser.userId}`,
+          `‏https://localhost:7007/api/Feedback/user/${loggedInUser.userId}`,
           {
             headers: {
               Authorization: `Bearer ${loggedInUser.token}`
@@ -85,7 +85,7 @@ const FeedbackPage = () => {
             throw new Error('User not logged in');
           }
           const response = await axios.get(
-            `http://localhost:5024/api/Report/user/${loggedInUser.userId}`,
+            `‏https://localhost:7007/api/Report/user/${loggedInUser.userId}`,
             {
               headers: {
                 Authorization: `Bearer ${loggedInUser.token}`
@@ -123,7 +123,7 @@ const FeedbackPage = () => {
   const handleDelete = async (feedbackId) => {
     try {
       const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-      await axios.delete(`http://localhost:5024/api/Feedback/${feedbackId}`, {
+      await axios.delete(`‏https://localhost:7007/api/Feedback/${feedbackId}`, {
         headers: {
           Authorization: `Bearer ${loggedInUser.token}`
         }
@@ -154,7 +154,7 @@ const FeedbackPage = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:5024/api/Feedback/${feedbackId}`,
+        `‏https://localhost:7007/api/Feedback/${feedbackId}`,
         feedbackData,
         {
           headers: {
@@ -189,7 +189,7 @@ const FeedbackPage = () => {
       const originalReport = reports.find(r => r.reportId === reportId);
       
       const response = await axios.put(
-        `http://localhost:5024/api/Report/${reportId}`,
+        `‏https://localhost:7007/api/Report/${reportId}`,
         {
           reportId: reportId,
           status: originalReport.status,
@@ -224,7 +224,7 @@ const FeedbackPage = () => {
   const handleDeleteReport = async (reportId) => {
     try {
       const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-      await axios.delete(`http://localhost:5024/api/Report/${reportId}`, {
+      await axios.delete(`‏https://localhost:7007/api/Report/${reportId}`, {
         headers: {
           Authorization: `Bearer ${loggedInUser.token}`
         }
