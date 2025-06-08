@@ -115,12 +115,12 @@ const [popupReviews, setPopupReviews] = useState([]);
                 productReviewsResponse,
                 animalReviewsResponse,
             ] = await Promise.all([
-                fetch(`http://localhost:5024/api/User/${userIdToFetch}`),
-                fetch('http://localhost:5024/api/Animals'),
-                fetch('http://localhost:5024/api/Products'),
-                fetch(`http://localhost:5024/api/Favorite/${userIdToFetch}`),
-                fetch('http://localhost:5024/api/PR_'),
-                fetch('http://localhost:5024/api/AR_'),
+                fetch(`https://petflix-backend-620z.onrender.com/api/User/${userIdToFetch}`),
+                fetch('https://petflix-backend-620z.onrender.com/api/Animals'),
+                fetch('https://petflix-backend-620z.onrender.com/api/Products'),
+                fetch(`https://petflix-backend-620z.onrender.com/api/Favorite/${userIdToFetch}`),
+                fetch('https://petflix-backend-620z.onrender.com/api/PR_'),
+                fetch('https://petflix-backend-620z.onrender.com/api/AR_'),
             ]);
 
             if (!userResponse.ok) throw new Error(`Failed to fetch user data: ${userResponse.status}`);
@@ -185,7 +185,7 @@ const [popupReviews, setPopupReviews] = useState([]);
             const animalReviewerIds = [...new Set(userAnimalReviews.map((review) => review.reviewerId))];
             const allReviewerIds = [...new Set([...productReviewerIds, ...animalReviewerIds])];
             const reviewersPromises = allReviewerIds.map((reviewerId) =>
-                fetch(`http://localhost:5024/api/User/${reviewerId}`).then((res) => res.json())
+                fetch(`https://petflix-backend-620z.onrender.com/api/User/${reviewerId}`).then((res) => res.json())
             );
             const reviewersData = await Promise.all(reviewersPromises);
             const reviewersMap = reviewersData.reduce((acc, reviewer) => {
@@ -278,7 +278,7 @@ const [popupReviews, setPopupReviews] = useState([]);
   const handleRemoveProfilePic = async () => {
     try {
       // Update the user's profilePic to null in the backend
-      const response = await fetch(`http://localhost:5024/api/User/${user.userId}`, {
+      const response = await fetch(`https://petflix-backend-620z.onrender.com/api/User/${user.userId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -317,7 +317,7 @@ const [popupReviews, setPopupReviews] = useState([]);
 
   const handleSaveProfilePic = async () => {
     try {
-      const response = await fetch(`http://localhost:5024/api/User/${user.userId}`, {
+      const response = await fetch(`https://petflix-backend-620z.onrender.com/api/User/${user.userId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -368,7 +368,7 @@ const [popupReviews, setPopupReviews] = useState([]);
         reviewDate: new Date().toISOString(),
       };
 
-      const response = await fetch('http://localhost:5024/api/AR_', {
+      const response = await fetch('https://petflix-backend-620z.onrender.com/api/AR_', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(reviewData),
@@ -382,7 +382,7 @@ const [popupReviews, setPopupReviews] = useState([]);
       setReviewFeedback('Review submitted successfully!');
       setSelectedAnimal('');
       setReviewContent('');
-      const animalReviewsResponse = await fetch('http://localhost:5024/api/AR_');
+      const animalReviewsResponse = await fetch('https://petflix-backend-620z.onrender.com/api/AR_');
       const animalReviewsData = await animalReviewsResponse.json();
       const userAnimalIds = userAnimals.map(animal => animal.animal_id);
       setAnimalReviews(animalReviewsData.filter(review => userAnimalIds.includes(review.animalId)));
@@ -415,7 +415,7 @@ const [popupReviews, setPopupReviews] = useState([]);
         reviewDate: new Date().toISOString(),
       };
 
-      const response = await fetch('http://localhost:5024/api/PR_', {
+      const response = await fetch('https://petflix-backend-620z.onrender.com/api/PR_', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(reviewData),
@@ -429,7 +429,7 @@ const [popupReviews, setPopupReviews] = useState([]);
       setProductReviewFeedback('Product review submitted successfully!');
       setSelectedProduct('');
       setProductReviewContent('');
-      const productReviewsResponse = await fetch('http://localhost:5024/api/PR_');
+      const productReviewsResponse = await fetch('https://petflix-backend-620z.onrender.com/api/PR_');
       const productReviewsData = await productReviewsResponse.json();
       const userProductIds = userProducts.map(product => product.product_id);
       setProductReviews(productReviewsData.filter(review => userProductIds.includes(review.productId)));
@@ -547,7 +547,7 @@ const [popupReviews, setPopupReviews] = useState([]);
   const handleSave = async (dataToUpdate, endpoint, setState, setIsEditingState) => {
     setErrorMessage(null);
     try {
-      const response = await fetch(`http://localhost:5024/api/User/${user.userId}${endpoint}`, {
+      const response = await fetch(`https://petflix-backend-620z.onrender.com/api/User/${user.userId}${endpoint}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToUpdate),
@@ -691,7 +691,7 @@ const handleConfirmDelete = async () => {
     setFeedbackType('info');
     setShowDeletePopup(false);
 
-    const response = await axios.delete(`http://localhost:5024/api/User/${user.userId}`, {
+    const response = await axios.delete(`https://petflix-backend-620z.onrender.com/api/User/${user.userId}`, {
       headers: {
         'Authorization': `Bearer ${loggedInUser.token}`,
         'Content-Type': 'application/json',
@@ -755,7 +755,7 @@ const handleConfirmDelete = async () => {
     try {
       if (isCurrentlyFavorited && existingFav) {
         // Remove from favorites
-        const response = await axios.delete(`http://localhost:5024/api/Favorite?userId=${userId}&itemId=${id}`);
+        const response = await axios.delete(`https://petflix-backend-620z.onrender.com/api/Favorite?userId=${userId}&itemId=${id}`);
         if (response.status !== 200) {
           throw new Error('Failed to remove favorite');
         }
@@ -771,7 +771,7 @@ const handleConfirmDelete = async () => {
           ...(type === 'animal' ? { animalId: id } : { productId: id }),
         };
         console.log('Adding favorite with payload:', favoriteData);
-        const response = await axios.post('http://localhost:5024/api/Favorite', favoriteData);
+        const response = await axios.post('https://petflix-backend-620z.onrender.com/api/Favorite', favoriteData);
         if (response.status !== 200 && response.status !== 201) {
           throw new Error('Failed to add favorite');
         }
@@ -816,7 +816,7 @@ const handleConfirmDelete = async () => {
 
   const handleSaveBioClick = async () => {
     try {
-      const response = await fetch(`http://localhost:5024/api/User/${user.userId}`, {
+      const response = await fetch(`https://petflix-backend-620z.onrender.com/api/User/${user.userId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...user, bio: editedBio, password: initialUser.password }),
@@ -848,8 +848,8 @@ const handleConfirmDelete = async () => {
   const handleItemNameClick = async (itemId, itemType) => {
   try {
     const endpoint = itemType === 'animal' 
-      ? `http://localhost:5024/api/Animals/${itemId}`
-      : `http://localhost:5024/api/Products/${itemId}`;
+      ? `https://petflix-backend-620z.onrender.com/api/Animals/${itemId}`
+      : `https://petflix-backend-620z.onrender.com/api/Products/${itemId}`;
     
     const response = await axios.get(endpoint);
     const fullItemData = response.data;
@@ -857,10 +857,10 @@ const handleConfirmDelete = async () => {
     // Fetch reviews for the item
     let reviewsData = [];
     if (itemType === 'product') {
-      const reviewsResponse = await axios.get(`http://localhost:5024/api/PR_/product/${itemId}`);
+      const reviewsResponse = await axios.get(`https://petflix-backend-620z.onrender.com/api/PR_/product/${itemId}`);
       reviewsData = reviewsResponse.data;
     } else if (itemType === 'animal') {
-      const reviewsResponse = await axios.get(`http://localhost:5024/api/AR_/animal/${itemId}`);
+      const reviewsResponse = await axios.get(`https://petflix-backend-620z.onrender.com/api/AR_/animal/${itemId}`);
       reviewsData = reviewsResponse.data;
     }
 

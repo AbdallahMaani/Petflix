@@ -68,7 +68,7 @@ const FeedbackTab = ({ feedbacks, setFeedbacks, setSuccessMessage, setErrorMessa
       };
 
       await axios.patch(
-        `http://localhost:5024/api/Feedback/${feedback.feedbackId}/status`,
+        `https://petflix-backend-620z.onrender.com/api/Feedback/${feedback.feedbackId}/status`,
         payload,
         config
       );
@@ -102,7 +102,7 @@ const FeedbackTab = ({ feedbacks, setFeedbacks, setSuccessMessage, setErrorMessa
   const handleConfirmDelete = async (feedbackId) => {
     try {
       const config = getAuthConfig();
-      await axios.delete(`http://localhost:5024/api/Feedback/${feedbackId}`, config);
+      await axios.delete(`https://petflix-backend-620z.onrender.com/api/Feedback/${feedbackId}`, config);
       setFeedbacks(feedbacks.filter(f => f.feedbackId !== feedbackId));
       setSuccessMessage('Feedback deleted successfully!');
       setTimeout(() => setSuccessMessage(''), 3000);

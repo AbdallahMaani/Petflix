@@ -120,7 +120,7 @@ const Payment = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       await axios.patch(
-        `http://localhost:5024/api/Order/${orderId}/status`,
+        `https://petflix-backend-620z.onrender.com/api/Order/${orderId}/status`,
         "Shipped",
         {
           headers: {

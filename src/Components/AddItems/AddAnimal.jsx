@@ -163,7 +163,7 @@ const AddAnimal = () => {
     try {
       const user = JSON.parse(localStorage.getItem('loggedInUser'));
       
-      const response = await axios.post('http://localhost:5024/api/Animals', submissionData, {
+      const response = await axios.post('https://petflix-backend-620z.onrender.com/api/Animals', submissionData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`,

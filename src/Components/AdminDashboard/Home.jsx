@@ -53,7 +53,7 @@ const Home = ({
   const fetchReports = async () => {
     try {
       setIsLoadingReports(true);
-      const response = await fetch('http://localhost:5024/api/Report');
+      const response = await fetch('https://petflix-backend-620z.onrender.com/api/Report');
       if (!response.ok) throw new Error('Failed to fetch reports');
       const data = await response.json();
       setReports(data);

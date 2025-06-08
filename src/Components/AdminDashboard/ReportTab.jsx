@@ -64,7 +64,7 @@ const ReportTab = ({ reports, setReports, onReportsUpdated, setSuccessMessage, s
       };
 
       const response = await axios.put(
-        `http://localhost:5024/api/Report/${report.reportId}`,
+        `https://petflix-backend-620z.onrender.com/api/Report/${report.reportId}`,
         payload,
         config
       );
@@ -101,7 +101,7 @@ const ReportTab = ({ reports, setReports, onReportsUpdated, setSuccessMessage, s
   const handleConfirmDelete = async (reportId) => {
     try {
       const config = getAuthConfig();
-      await axios.delete(`http://localhost:5024/api/Report/${reportId}`, config);
+      await axios.delete(`https://petflix-backend-620z.onrender.com/api/Report/${reportId}`, config);
       setReports(reports.filter(r => r.reportId !== reportId));
       if (onReportsUpdated) onReportsUpdated();
       setSuccessMessage('Report deleted successfully!');

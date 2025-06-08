@@ -19,7 +19,7 @@ export const Animals = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5024/api/Animals');
+        const response = await fetch('https://petflix-backend-620z.onrender.com/api/Animals');
         if (!response.ok) {
           throw new Error('Failed to fetch animal data');
         }

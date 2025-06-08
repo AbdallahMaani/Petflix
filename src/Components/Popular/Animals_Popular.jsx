@@ -11,7 +11,7 @@ const Popular = forwardRef((props, ref) => {
   useEffect(() => {
     const fetchAnimals = async () => {
       try {
-        const response = await axios.get('http://localhost:5024/api/Animals');
+        const response = await axios.get('https://petflix-backend-620z.onrender.com/api/Animals');
         setAnimals(response.data.slice(0, 8));
       } catch (err) {
         console.error("Error fetching animals:", err);

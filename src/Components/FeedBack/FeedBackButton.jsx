@@ -39,7 +39,7 @@ const FeedbackButton = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:5024/api/Feedback', {
+      const response = await fetch('https://petflix-backend-620z.onrender.com/api/Feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

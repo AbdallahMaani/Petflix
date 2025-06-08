@@ -31,7 +31,7 @@ const Home = () => {
           setUser(null);
           return;
         }
-        const response = await fetch(`http://localhost:5024/api/User/${loggedInUser.userId}`);
+        const response = await fetch(`https://petflix-backend-620z.onrender.com/api/User/${loggedInUser.userId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch user data');
         }
