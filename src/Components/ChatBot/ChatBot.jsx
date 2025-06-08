@@ -24,7 +24,7 @@ const ChatBot = () => {
       const onLoad = () => {
         const script = document.createElement("script");
         script.src = "https://www.chatbase.co/embed.min.js";
-        script.id = "uqsLdgWbIVygLMoA_frkh";
+        script.id = "NVoOEwIQgCCsW2mM-bYPr"; // <-- new key
         script.domain = "www.chatbase.co";
         document.body.appendChild(script);
       };
