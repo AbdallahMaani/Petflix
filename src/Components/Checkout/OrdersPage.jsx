@@ -933,7 +933,7 @@ const OrdersPage = () => {
                                   <div className="order-item-seller">
                                     <div className="seller-header">
                                       <img
-                                        src={item.ownerDetails.imageUrl || 'https://via.placeholder.com/30'}
+                                        src={item.ownerDetails.profilePic || 'https://via.placeholder.com/30'}
                                         alt={`${item.ownerDetails.name}'s profile`}
                                         className="owner-pic"
                                       />

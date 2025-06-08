@@ -189,23 +189,27 @@
   }
 
   /* Popup.css */
-.confirmation-popup {
-  position: fixed;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(37, 37, 37, 0.65);
-  backdrop-filter: blur(6px);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1001; /* Ensure it's on top of other elements */
-  text-align: center;
-  box-shadow: 0 0px 100px 25px rgba(0, 0, 0, 0.5); 
-  opacity: 0; /* Initially hidden */
-  animation: fadeIn .3s ease-in-out forwards; 
-}
-
+  .confirmation-popup {
+    position: fixed;
+    inset: 0; /* covers the whole viewport */
+    margin: auto;
+    width: max-content;
+    min-width: 340px;
+    max-width: 90vw;
+    min-height: 180px;
+    max-height: 20vh;
+  
+    background-color: rgba(37, 37, 37, 0.65);
+    backdrop-filter: blur(6px);
+    padding: 2rem;
+    border-radius: 20px;
+    z-index: 1001;
+    text-align: center;
+    box-shadow: 0 0px 100px 25px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeIn .3s ease-in-out forwards;
+  }
+  
 .confirmation-popup p {
   margin-bottom: 1.7rem;
   font-size: 1.2em;

@@ -16,6 +16,7 @@ import './Dashboard.css';
 
 const FeedbackTab = ({ feedbacks, setFeedbacks, setSuccessMessage, setErrorMessage }) => {
   const [editingId, setEditingId] = useState(null);
+  const [deletingId, setDeletingId] = useState(null); // <-- Add this line
   const [selectedStatus, setSelectedStatus] = useState('Pending');
   const [responseInput, setResponseInput] = useState('');
   const navigate = useNavigate();
@@ -94,24 +95,32 @@ const FeedbackTab = ({ feedbacks, setFeedbacks, setSuccessMessage, setErrorMessa
     }
   };
 
-  const handleDeleteClick = async (feedbackId) => {
-    if (window.confirm('Are you sure you want to delete this feedback?')) {
-      try {
-        const config = getAuthConfig();
-        await axios.delete(`http://localhost:5024/api/Feedback/${feedbackId}`, config);
-        setFeedbacks(feedbacks.filter(f => f.feedbackId !== feedbackId));
-        setSuccessMessage('Feedback deleted successfully!');
-        setTimeout(() => setSuccessMessage(''), 3000);
-      } catch (err) {
-        const errorMsg =
-          err.response?.status === 401
-            ? 'Session expired. Redirecting to login...'
-            : `Failed to delete feedback: ${err.response?.data?.message || err.message}`;
-        setErrorMessage(errorMsg);
-        setTimeout(() => setErrorMessage(''), 3000);
-        if (err.response?.status === 401) setTimeout(() => navigate('/login'), 2000);
-      }
+  const handleDeleteClick = (feedbackId) => {
+    setDeletingId(feedbackId); // Show confirm/cancel UI
+  };
+
+  const handleConfirmDelete = async (feedbackId) => {
+    try {
+      const config = getAuthConfig();
+      await axios.delete(`http://localhost:5024/api/Feedback/${feedbackId}`, config);
+      setFeedbacks(feedbacks.filter(f => f.feedbackId !== feedbackId));
+      setSuccessMessage('Feedback deleted successfully!');
+      setTimeout(() => setSuccessMessage(''), 3000);
+      setDeletingId(null);
+    } catch (err) {
+      const errorMsg =
+        err.response?.status === 401
+          ? 'Session expired. Redirecting to login...'
+          : `Failed to delete feedback: ${err.response?.data?.message || err.message}`;
+      setErrorMessage(errorMsg);
+      setTimeout(() => setErrorMessage(''), 3000);
+      if (err.response?.status === 401) setTimeout(() => navigate('/login'), 2000);
+      setDeletingId(null);
     }
+  };
+
+  const handleCancelDelete = () => {
+    setDeletingId(null);
   };
 
   const handleCancelEdit = () => {
@@ -188,6 +197,21 @@ const FeedbackTab = ({ feedbacks, setFeedbacks, setSuccessMessage, setErrorMessa
                       <button
                         className="petflix-feedback-cancel-response-btn"
                         onClick={handleCancelEdit}
+                      >
+                        <FontAwesomeIcon icon={faTimes} /> Cancel
+                      </button>
+                    </div>
+                  ) : deletingId === feedback.feedbackId ? (
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <button
+                        className="petflix-feedback-delete-button petflix-feedback-delete-btn"
+                        onClick={() => handleConfirmDelete(feedback.feedbackId)}
+                      >
+                        <FontAwesomeIcon icon={faTrash} /> Confirm
+                      </button>
+                      <button
+                        className="petflix-feedback-cancel-response-btn"
+                        onClick={handleCancelDelete}
                       >
                         <FontAwesomeIcon icon={faTimes} /> Cancel
                       </button>

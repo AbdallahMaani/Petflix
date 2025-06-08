@@ -18,6 +18,7 @@ const ReportTab = ({ reports, setReports, onReportsUpdated, setSuccessMessage, s
   const [editingStatusId, setEditingStatusId] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(0);
   const [resolutionNotes, setResolutionNotes] = useState('');
+  const [deletingId, setDeletingId] = useState(null); // <-- Add this line
   const navigate = useNavigate();
 
   const statusMappings = {
@@ -93,25 +94,33 @@ const ReportTab = ({ reports, setReports, onReportsUpdated, setSuccessMessage, s
     }
   };
 
-  const handleDeleteClick = async (reportId) => {
-    if (window.confirm('Are you sure you want to delete this report?')) {
-      try {
-        const config = getAuthConfig();
-        await axios.delete(`http://localhost:5024/api/Report/${reportId}`, config);
-        setReports(reports.filter(r => r.reportId !== reportId));
-        if (onReportsUpdated) onReportsUpdated();
-        setSuccessMessage('Report deleted successfully!');
-        setTimeout(() => setSuccessMessage(''), 3000);
-      } catch (err) {
-        const errorMsg =
-          err.response?.status === 401
-            ? 'Session expired. Redirecting to login...'
-            : `Failed to delete report: ${err.response?.data?.message || err.message}`;
-        setErrorMessage(errorMsg);
-        setTimeout(() => setErrorMessage(''), 3000);
-        if (err.response?.status === 401) setTimeout(() => navigate('/login'), 2000);
-      }
+  const handleDeleteClick = (reportId) => {
+    setDeletingId(reportId); // Show confirm/cancel UI
+  };
+
+  const handleConfirmDelete = async (reportId) => {
+    try {
+      const config = getAuthConfig();
+      await axios.delete(`http://localhost:5024/api/Report/${reportId}`, config);
+      setReports(reports.filter(r => r.reportId !== reportId));
+      if (onReportsUpdated) onReportsUpdated();
+      setSuccessMessage('Report deleted successfully!');
+      setTimeout(() => setSuccessMessage(''), 3000);
+      setDeletingId(null);
+    } catch (err) {
+      const errorMsg =
+        err.response?.status === 401
+          ? 'Session expired. Redirecting to login...'
+          : `Failed to delete report: ${err.response?.data?.message || err.message}`;
+      setErrorMessage(errorMsg);
+      setTimeout(() => setErrorMessage(''), 3000);
+      if (err.response?.status === 401) setTimeout(() => navigate('/login'), 2000);
+      setDeletingId(null);
     }
+  };
+
+  const handleCancelDelete = () => {
+    setDeletingId(null);
   };
 
   const handleCancelEdit = () => {
@@ -210,6 +219,21 @@ const ReportTab = ({ reports, setReports, onReportsUpdated, setSuccessMessage, s
                         <button
                           className="petflix-feedback-cancel-response-btn"
                           onClick={handleCancelEdit}
+                        >
+                          <FontAwesomeIcon icon={faTimes} /> Cancel
+                        </button>
+                      </div>
+                    ) : deletingId === report.reportId ? (
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <button
+                          className="petflix-feedback-delete-button petflix-feedback-delete-btn"
+                          onClick={() => handleConfirmDelete(report.reportId)}
+                        >
+                          <FontAwesomeIcon icon={faTrash} /> Confirm
+                        </button>
+                        <button
+                          className="petflix-feedback-cancel-response-btn"
+                          onClick={handleCancelDelete}
                         >
                           <FontAwesomeIcon icon={faTimes} /> Cancel
                         </button>
