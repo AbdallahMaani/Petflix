@@ -314,7 +314,6 @@ const LoginSignup = () => {
                 name="city"
                 value={signUpData.city}
                 onChange={handleCityChange}
-                required
                 disabled={!selectedCountry}
               >
                 <option value="">Select City</option>
@@ -347,7 +346,6 @@ const LoginSignup = () => {
                 name="delivery_method"
                 value={signUpData.delivery_method}
                 onChange={(e) => setSignUpData({ ...signUpData, delivery_method: e.target.value })}
-                required
               >
                 <option value="">Select Delivery Status</option>
                 <option value="Available">Available</option>
