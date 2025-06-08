@@ -12,7 +12,7 @@ const AnimalAd = ({ scrollToAnimals }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [animate, setAnimate] = useState(false);
   const intervalRef = useRef(null);
-  const SLIDE_INTERVAL = 9500;
+  const SLIDE_INTERVAL = 10000;
   const images = [catAd, catAd2, hourseAd, birdAd];
   const [user, setUser] = useState({ name: '' });
 

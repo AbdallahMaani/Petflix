@@ -24,8 +24,8 @@ const FeedbackPage = () => {
   const [activeTab, setActiveTab] = useState('feedback');
   const [feedbackList, setFeedbackList] = useState([]);
   const [reports, setReports] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null); // Renamed to errorMessage
-  const [successMessage, setSuccessMessage] = useState(null); // Added successMessage
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
   const [modal, setModal] = useState({ 
     isOpen: false, 
     type: '', 
@@ -53,53 +53,33 @@ const FeedbackPage = () => {
   };
 
   useEffect(() => {
-    const fetchFeedback = async () => {
+    const fetchAll = async () => {
       try {
         const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
         if (!loggedInUser?.userId || !loggedInUser?.token) {
           throw new Error('User not logged in');
         }
-        const response = await axios.get(
+        // Fetch feedbacks
+        const feedbackRes = await axios.get(
           `http://localhost:5024/api/Feedback/user/${loggedInUser.userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${loggedInUser.token}`
-            }
-          }
+          { headers: { Authorization: `Bearer ${loggedInUser.token}` } }
         );
-        setFeedbackList(response.data);
+        setFeedbackList(feedbackRes.data);
+
+        // Fetch reports
+        const reportsRes = await axios.get(
+          `http://localhost:5024/api/Report/user/${loggedInUser.userId}`,
+          { headers: { Authorization: `Bearer ${loggedInUser.token}` } }
+        );
+        setReports(reportsRes.data);
+
       } catch (err) {
-        setErrorMessage(err.response?.data?.message || 'Failed to fetch feedback');
+        setErrorMessage(err.response?.data?.message || 'Failed to fetch feedback or reports');
       }
     };
 
-    fetchFeedback();
+    fetchAll();
   }, [navigate]);
-
-  useEffect(() => {
-    if (activeTab === 'reports') {
-      const fetchReports = async () => {
-        try {
-          const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-          if (!loggedInUser?.userId || !loggedInUser?.token) {
-            throw new Error('User not logged in');
-          }
-          const response = await axios.get(
-            `http://localhost:5024/api/Report/user/${loggedInUser.userId}`,
-            {
-              headers: {
-                Authorization: `Bearer ${loggedInUser.token}`
-              }
-            }
-          );
-          setReports(response.data);
-        } catch (err) {
-          setErrorMessage(err.response?.data?.message || 'Failed to fetch reports');
-        }
-      };
-      fetchReports();
-    }
-  }, [activeTab]);
 
   const getStatusDisplay = (status, type = 'feedback') => {
     const mappings = statusMappings[type];
@@ -316,22 +296,22 @@ const FeedbackPage = () => {
   </div>
 )}
 
-        <div className="tabs">
-          <button
-            className={`tab-button ${activeTab === 'feedback' ? 'active' : ''}`}
-            onClick={() => setActiveTab('feedback')}
-          >
-            <FontAwesomeIcon icon={faComment} className="tab-icon" />
-            My Feedbacks
-          </button>
-          <button
-            className={`tab-button ${activeTab === 'reports' ? 'active' : ''}`}
-            onClick={() => setActiveTab('reports')}
-          >
-            <FontAwesomeIcon icon={faFlag} className="tab-icon" />
-            My Reports
-          </button>
-        </div>
+<div className="tabs">
+  <button
+    className={`tab-button ${activeTab === 'feedback' ? 'active' : ''}`}
+    onClick={() => setActiveTab('feedback')}
+  >
+    <FontAwesomeIcon icon={faComment} className="tab-icon" />
+    My Feedbacks {feedbackList.length > 0 ? `(${feedbackList.length})` : ''}
+  </button>
+  <button
+    className={`tab-button ${activeTab === 'reports' ? 'active' : ''}`}
+    onClick={() => setActiveTab('reports')}
+  >
+    <FontAwesomeIcon icon={faFlag} className="tab-icon" />
+    My Reports {reports.length > 0 ? `(${reports.length})` : ''}
+  </button>
+</div>
 
         <div className="tab-content">
           {activeTab === 'feedback' ? (
