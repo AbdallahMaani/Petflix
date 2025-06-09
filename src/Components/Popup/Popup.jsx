@@ -330,7 +330,6 @@ const Popup = ({
           itemId: itemId,
           ...(itemType === 'Animal' ? { animalId: itemId } : { productId: itemId }),
         };
-        console.log('Adding favorite with payload:', favoriteData);
         await axios.post(
           'https://petflix-backend-620z.onrender.com/api/Favorite',
           favoriteData,

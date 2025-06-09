@@ -155,7 +155,6 @@ const Cart = () => {
         })),
       };
 
-      console.log("Submitting order:", orderData);
 
       const response = await axios.post(
         `https://petflix-backend-620z.onrender.com/api/Order`,

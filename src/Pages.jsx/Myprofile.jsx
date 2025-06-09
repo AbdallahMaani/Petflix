@@ -770,7 +770,6 @@ const handleConfirmDelete = async () => {
           itemId: id,
           ...(type === 'animal' ? { animalId: id } : { productId: id }),
         };
-        console.log('Adding favorite with payload:', favoriteData);
         const response = await axios.post('https://petflix-backend-620z.onrender.com/api/Favorite', favoriteData);
         if (response.status !== 200 && response.status !== 201) {
           throw new Error('Failed to add favorite');
