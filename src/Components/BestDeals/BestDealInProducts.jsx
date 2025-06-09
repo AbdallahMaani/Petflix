@@ -23,7 +23,7 @@ const BestDeal = () => {
         setLoading(true);
         const response = await axios.get('https://petflix-backend-620z.onrender.com/api/Products');
         const products = response.data;
-        const bestProduct = products.length > 0 ? products[32] : null;
+        const bestProduct = products.length > 0 ? products[0] : null;
         setBestItem(bestProduct);
 
         if (bestProduct && userId) {

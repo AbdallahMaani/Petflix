@@ -28,7 +28,7 @@ const BestDeal = () => {
       .then(data => {
         console.log('Animal Data:', data);
         if (data && data.length > 0) {
-          const bestDealAnimal = data[21];
+          const bestDealAnimal = data[3];
           setBestItem(bestDealAnimal);
 
           if (bestDealAnimal.userId) {
