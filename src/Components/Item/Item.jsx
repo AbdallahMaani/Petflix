@@ -233,7 +233,6 @@ const Item = memo((props) => {
       return;
     }
   
-    console.log('Item: Adding to cart', { itemId, quantity, itemType }); // Debug log
   
     try {
       await axios.post(

@@ -176,7 +176,6 @@ const Popup = ({
     if (animalData.length > 0 || productDataState.length > 0) {
       const item = getItemData(currentItem);
       setCurrentItemDetails(item);
-      console.log('Current Item Details:', item);
       if (isEditing && item) {
         const [value, unit] = (item.age || '').split(' ');
         setAgeValue(value || '');

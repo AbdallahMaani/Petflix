@@ -26,7 +26,6 @@ const BestDeal = () => {
         return response.json();
       })
       .then(data => {
-        console.log('Animal Data:', data);
         if (data && data.length > 0) {
           const bestDealAnimal = data[0];
           setBestItem(bestDealAnimal);
@@ -38,7 +37,6 @@ const BestDeal = () => {
                 return response.json();
               })
               .then(userData => {
-                console.log('User Data:', userData);
                 setUser(userData);
                 setLoading(false);
               })
