@@ -623,7 +623,7 @@ const OrdersPage = () => {
                                         <span>Available Days:</span> {item.ownerDetails.availableDays || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
-                                        <span>Available Hours:</span> {item.ownerDetails.availableHours || 'N/A'}
+                                        <span>Available Time:</span> {item.ownerDetails.availableHours || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
                                         <span>Delivery Method:</span> {item.ownerDetails.delivery_method || 'N/A'}
@@ -807,7 +807,7 @@ const OrdersPage = () => {
                                         <div>Available Days:</div> {item.ownerDetails.availableDays || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
-                                        <div>Available Hours:</div> {item.ownerDetails.availableHours || 'N/A'}
+                                        <div>Available Time:</div> {item.ownerDetails.availableHours || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
                                         <div>Delivery Method:</div> {item.ownerDetails.delivery_method || 'N/A'}
@@ -965,7 +965,7 @@ const OrdersPage = () => {
                                         <div>Available Days:</div> {item.ownerDetails.days || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
-                                        <div>Available Hours:</div> {item.ownerDetails.hours || 'N/A'}
+                                        <div>Available Time:</div> {item.ownerDetails.hours || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
                                         <div>Delivery Method:</div> {item.ownerDetails.method || 'N/A'}
