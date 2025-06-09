@@ -181,7 +181,7 @@ const OrdersPage = () => {
 
             return {
               ...order,
-              orderItems: itemsWithDetails
+              orderItems: itemsWithDetailsItem
             };
           })
         );
