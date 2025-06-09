@@ -38,7 +38,7 @@ body {
 .petflix-dashboard-header {
   font-size: 2.25rem;
   font-weight: 800;
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
   text-align: center;
   margin-bottom: 2rem;
   letter-spacing: -0.025em;
@@ -148,7 +148,7 @@ body {
 .petflix-dashboard-card-value {
   font-size: 2.5rem;
   font-weight: 800;
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
 }
 
 /* Tab Sections */
@@ -187,7 +187,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.85rem;
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
 }
 
 .petflix-dashboard-table tr:hover {
@@ -224,7 +224,7 @@ body {
 }
 
 .petflix-dashboard-toggle-button:hover {
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
   transform: scale(1.1);
 }
 
@@ -239,7 +239,7 @@ body {
 .petflix-dashboard-reviews-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
   margin-bottom: 0.75rem;
 }
 
@@ -313,7 +313,7 @@ body {
 .petflix-dashboard-subsection-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
   margin-bottom: 0.75rem;
 }
 
@@ -357,7 +357,7 @@ body {
 .petflix-feedback-section-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
   margin-bottom: 1.5rem;
 }
 
@@ -388,7 +388,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.85rem;
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
 }
 
 .petflix-feedback-table tr:hover {
@@ -608,7 +608,7 @@ body {
 
 .petflix-dashboard-user-details-label {
   font-weight: 600;
-  color: rgb(14, 37, 78);
+  color: rgb(20, 45, 87);
   min-width: 120px;
 }
 

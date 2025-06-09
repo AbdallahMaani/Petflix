@@ -157,7 +157,7 @@ const AddProduct = () => {
   
     try {
       const user = JSON.parse(localStorage.getItem('loggedInUser'));
-      if (!user?.token) throw new Error('No authentication token found');
+      //if (!user?.token) throw new Error('No authentication token found');
       
       const response = await axios.post('https://petflix-backend-620z.onrender.com/api/Products', submissionData, {
         headers: {
