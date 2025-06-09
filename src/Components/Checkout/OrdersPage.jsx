@@ -103,18 +103,18 @@ const OrdersPage = () => {
         const response = await axios.get(`https://petflix-backend-620z.onrender.com/api/Order/user/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+            'Content-Type': `application/json`
           }
         });
         const ordersData = response.data;
 
         const enhancedOrders = await Promise.all(
           ordersData.map(async (order) => {
-            const itemsWithDetails = await Promise.all(
+            const itemsWithDetailsItem = await Promise.all(
               order.orderItems.map(async (item) => {
                 let itemDetails = {};
                 try {
-                  const animalRes = await axios.get(`https://petflix-backend-620z.onrender.com/api/Animals/${item.itemId}`, {
+                  const animalRes = await axios.get(`https://petflix-backend-620z.onrender.com/api/Animals/${item.itemId}}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                   });
                   itemDetails = {
@@ -123,11 +123,11 @@ const OrdersPage = () => {
                     name: animalRes.data.animal_title,
                     price: animalRes.data.animal_new_price,
                     imageUrl: animalRes.data.animal_pic || 'https://via.placeholder.com/150',
-                    description: animalRes.data.animal_description
+                    description: animalRes.data.animal_details
                   };
                 } catch (animalErr) {
                   try {
-                    const productRes = await axios.get(`https://petflix-backend-620z.onrender.com/api/Products/${item.itemId}`, {
+                    const productRes = await axios.get(`https://petflix-backend-620z.onrender.com/api/Products/${item.itemId}}`, {
                       headers: { 'Authorization': `Bearer ${token}` }
                     });
                     itemDetails = {
@@ -135,8 +135,8 @@ const OrdersPage = () => {
                       inferredType: 'Product',
                       name: productRes.data.product_title,
                       price: productRes.data.product_new_price,
-                      imageUrl: productRes.data.product_pic || 'https://via.placeholder.com/150',
-                      description: productRes.data.product_description
+                      imageUrl: productRes.data.product_image || 'https://via.placeholder.com/150',
+                      description: productRes.data.product_details
                     };
                   } catch (productErr) {
                     console.error("Error fetching product details:", productErr);
@@ -152,7 +152,7 @@ const OrdersPage = () => {
 
                 let ownerDetails = {};
                 try {
-                  const ownerRes = await axios.get(`https://petflix-backend-620z.onrender.com/api/User/${item.ownerId}`, {
+                  const ownerRes = await axios.get(`https://petflix-backend-620z.onrender.com/api/User/${item.ownerId}}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                   });
                   ownerDetails = ownerRes.data;
@@ -289,6 +289,17 @@ const OrdersPage = () => {
   }, [userId, token, location.state]);
 
   const handleCancelOrder = async (orderId) => {
+    if (!orderId || isNaN(orderId)) {
+      setError('Invalid order ID.');
+      return;
+    }
+
+    if (!token) {
+      setError('Please log in to cancel orders.');
+      navigate('/login');
+      return;
+    }
+
     try {
       const orderToCancel = orders.find(order => order.orderId === orderId);
       if (!orderToCancel || orderToCancel.status !== 'Processing') {
@@ -296,15 +307,32 @@ const OrdersPage = () => {
         return;
       }
 
-      await axios.patch(
-        `https://petflix-backend-620z.onrender.com/api/Order/${orderId}/status`,
-        "Canceled",
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+      const axiosInstance = axios.create({
+        timeout: 30000, // 30 seconds timeout
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const retryRequest = async (request, maxRetries = 5, delay = 1000) => {
+        for (let i = 0; i < maxRetries; i++) {
+          try {
+            return await request();
+          } catch (err) {
+            if (i === maxRetries - 1) throw err;
+            console.warn(`Retry ${i + 1} failed: ${err.message}`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+            delay *= 2; // Exponential backoff
           }
         }
+      };
+
+      await retryRequest(() =>
+        axiosInstance.patch(
+          `https://petflix-backend-620z.onrender.com/api/Order/${orderId}/status`,
+          "Canceled"
+        )
       );
 
       setOrders(prevOrders =>
@@ -316,8 +344,20 @@ const OrdersPage = () => {
       setActiveTab('canceled');
       setError(null);
     } catch (err) {
-      console.error("Error canceling order:", err);
-      setError(`Failed to cancel order: ${err.response?.data?.message || err.message}`);
+      console.error('Cancel order error:', err);
+      if (err.response) {
+        console.error('Response status:', err.response.status);
+        console.error('Response data:', err.response.data);
+        const errorMsg = err.response.data.message || 
+                         err.response.data.title || 
+                         JSON.stringify(err.response.data.errors) || 
+                         `HTTP ${err.response.status} error`;
+        setError(`Failed to cancel order: ${errorMsg}`);
+      } else if (err.request) {
+        setError('Network error: Unable to reach server. Please check your connection or try again later.');
+      } else {
+        setError(`Failed to cancel order: ${err.message}`);
+      }
     }
   };
 
@@ -633,7 +673,7 @@ const OrdersPage = () => {
                                 )}
                                 <div className="order-item-price">
                                   <div className="order-item-total">
-                                    Total : {(item.price * item.quantity).toFixed(2)} JD
+                                    Total: {(item.price * item.quantity).toFixed(2)} JD
                                   </div>
                                 </div>
                               </div>
@@ -781,14 +821,12 @@ const OrdersPage = () => {
                                       />
                                       <div>
                                         <h4>{item.inferredType === 'Animal' ? 'Owner' : 'Seller'}</h4>
-                                        <div>
-                                          <button
-                                            className="seller-link"
-                                            onClick={() => handleOwnerClick(item.ownerId)}
-                                          >
-                                            {item.ownerDetails.name || 'Unknown'}
-                                          </button>
-                                        </div>
+                                        <button
+                                          className="seller-link"
+                                          onClick={() => handleOwnerClick(item.ownerId)}
+                                        >
+                                          {item.ownerDetails.name || 'Unknown'}
+                                        </button>
                                       </div>
                                     </div>
                                     <div className="seller-info-grid">
@@ -817,7 +855,7 @@ const OrdersPage = () => {
                                 )}
                                 <div className="order-item-price">
                                   <div className="order-item-total">
-                                    Total : {(item.price * item.quantity).toFixed(2)} JD
+                                    Total: {(item.price * item.quantity).toFixed(2)} JD
                                   </div>
                                 </div>
                               </div>
@@ -922,7 +960,7 @@ const OrdersPage = () => {
                                     </>
                                   )}
                                   <div>
-                                    <span>Quantity:</span> <span className="order-item-digit">x{item.quantity}</span>
+                                    <span>Quantity:</span> <span className="order-item-quantity">x{item.quantity}</span>
                                   </div>
                                   <div>
                                     <span>Price:</span> {item.price?.toFixed(2) || '0.00'} JD
@@ -939,14 +977,12 @@ const OrdersPage = () => {
                                       />
                                       <div>
                                         <h4>{item.inferredType === 'Animal' ? 'Owner' : 'Seller'}</h4>
-                                        <div>
-                                          <button
-                                            className="seller-link"
-                                            onClick={() => handleOwnerClick(item.ownerId)}
-                                          >
-                                            {item.ownerDetails.name || 'Unknown'}
-                                          </button>
-                                        </div>
+                                        <button
+                                          className="seller-link"
+                                          onClick={() => handleOwnerClick(item.ownerId)}
+                                        >
+                                          {item.ownerDetails.name || 'Unknown'}
+                                        </button>
                                       </div>
                                     </div>
                                     <div className="seller-info-grid">
@@ -962,20 +998,20 @@ const OrdersPage = () => {
                                         <div>Location:</div> {item.ownerDetails.location || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
-                                        <div>Available Days:</div> {item.ownerDetails.days || 'N/A'}
+                                        <div>Available Days:</div> {item.ownerDetails.availableDays || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
-                                        <div>Available Hours:</div> {item.ownerDetails.hours || 'N/A'}
+                                        <div>Available Hours:</div> {item.ownerDetails.availableHours || 'N/A'}
                                       </div>
                                       <div className="seller-info-item">
-                                        <div>Delivery Method:</div> {item.ownerDetails.method || 'N/A'}
+                                        <div>Delivery Method:</div> {item.ownerDetails.delivery_method || 'N/A'}
                                       </div>
                                     </div>
                                   </div>
                                 )}
                                 <div className="order-item-price">
-                                  <div className="item-total">
-                                    Total : {(item.price * item.quantity).toFixed(2)} JD
+                                  <div className="order-item-total">
+                                    Total: {(item.price * item.quantity).toFixed(2)} JD
                                   </div>
                                 </div>
                               </div>
@@ -984,22 +1020,22 @@ const OrdersPage = () => {
                         </div>
 
                         <div className="order-summary-container">
-                          <div className="order-item">
+                          <div className="order-summary-item">
                             <div>Order Date:</div> {formatDate(order.orderDate)}
                           </div>
-                          <div className="order-item">
+                          <div className="order-summary-item">
                             <div>Location:</div> {userLocation}
                           </div>
-                          <div className="order-item">
+                          <div className="order-summary-item">
                             <div>Status:</div> {order.status}
                           </div>
-                          <div className="order-item">
+                          <div className="order-summary-item">
                             <div>Subtotal:</div> {calculateSubtotal(order)} JD
                           </div>
-                          <div className="order-item">
+                          <div className="order-summary-item">
                             <div>Delivery:</div> {order.includeDelivery ? '5.00 JD' : 'No Delivery Included'}
                           </div>
-                          <div className="order-item">
+                          <div className="order-summary-item">
                             <div>Tip:</div> {order.tip?.toFixed(2) || '0.00'} JD
                           </div>
                         </div>
@@ -1007,7 +1043,7 @@ const OrdersPage = () => {
                         <div className="order-card-footer">
                           <div className="order-total-container">
                             <span>Total Amount:</span>
-                            <span className="order-total">
+                            <span className="order-total-price">
                               {(parseFloat(calculateSubtotal(order)) + (order.tip || 0) + (order.includeDelivery ? 5 : 0)).toFixed(2)} JD
                             </span>
                           </div>
