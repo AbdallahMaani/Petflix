@@ -644,15 +644,22 @@ const Popup = ({
       const picField = isAnimal ? 'animal_pic' : 'product_pic';
       const shouldRemovePic = editedItem[picField] && editedItem[picField].length === 0;
       
+      // Ensure expiration is in UTC ISO format if present
+      let expirationValue = editedItem.expiration;
+      if (expirationValue) {
+        // If it's already ISO, keep it; if it's just a date (YYYY-MM-DD), convert to UTC ISO
+        if (/^\d{4}-\d{2}-\d{2}$/.test(expirationValue)) {
+          expirationValue = new Date(expirationValue + 'T00:00:00Z').toISOString();
+        }
+      }
       const dataToUpdate = {
         ...currentItemDetails,
         ...editedItem,
         [picField]: shouldRemovePic 
           ? null 
           : (editedItem[picField]?.[0] || currentItemDetails[picField]),
+        expiration: expirationValue || null,
       };
-      
-      if (!dataToUpdate.expiration) dataToUpdate.expiration = null;
 
       const response = await axios.put(apiUrl, dataToUpdate, {
         headers: {
@@ -701,6 +708,9 @@ const Popup = ({
       parsedValue = parseFloat(value) || '';
     } else if (name === 'gender') {
       parsedValue = parseInt(value, 10);
+    } else if (name === 'expiration') {
+      // Always store expiration as UTC ISO string if not empty
+      parsedValue = value ? new Date(value + 'T00:00:00Z').toISOString() : '';
     } else if (name === 'ageValue') {
       const cleanedValue = value.replace(/[^0-9.]/g, '');
       setAgeValue(cleanedValue);
