@@ -116,19 +116,48 @@ const AddProduct = () => {
       setMessage('Please fill all required fields');
       return;
     }
-  
+
+    // Validate expiration date
+    let expirationValue = null;
+    if (formData.expiration) {
+      const selectedDate = new Date(formData.expiration);
+      if (isNaN(selectedDate.getTime())) {
+        setMessage('Invalid expiration date');
+        return;
+      }
+      const currentDate = new Date();
+      currentDate.setHours(0, 0, 0, 0); // Normalize to start of day
+      if (selectedDate < currentDate) {
+        setMessage('Expiration date cannot be in the past');
+        return;
+      }
+      // Convert to UTC ISO 8601 format (e.g., "2025-06-09T00:00:00Z")
+      expirationValue = new Date(Date.UTC(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        selectedDate.getDate()
+      )).toISOString();
+    }
+
     const submissionData = {
-      ...formData,
+      product_title: formData.product_title,
+      product_description: formData.product_description,
+      product_category: formData.product_category,
+      product_type: formData.product_type,
+      designedFor: formData.designedFor,
+      product_size: formData.product_size || null,
       product_weight: formData.product_weight ? parseFloat(formData.product_weight) : null,
       product_new_price: formData.product_new_price ? parseFloat(formData.product_new_price) : null,
       product_old_price: formData.product_old_price ? parseFloat(formData.product_old_price) : null,
-      expiration: formData.expiration || null, // Send null instead of string when empty
-      userId: parseInt(formData.userId, 10),
-      ItemType: "Product"
+      expiration: expirationValue,
+      usage: formData.usage || null,
+      product_pic: formData.product_pic || null,
+      userId: parseInt(formData.userId, 10)
     };
   
     try {
       const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      if (!user?.token) throw new Error('No authentication token found');
       
       const response = await axios.post('https://petflix-backend-620z.onrender.com/api/Products', submissionData, {
         headers: {
@@ -138,7 +167,6 @@ const AddProduct = () => {
       });
   
       setMessage('Product added successfully!');
-      // Reset form
       setFormData({
         product_title: '',
         product_description: '',
@@ -154,15 +182,20 @@ const AddProduct = () => {
         product_old_price: '',
         userId: user.userId
       });
-      
     } catch (error) {
       console.error('Full error:', error);
       if (error.response) {
+        console.error('Response status:', error.response.status);
         console.error('Response data:', error.response.data);
-        // Show more detailed error message from server if available
-        setMessage(`Error: ${error.response.data.message || error.response.data.title || 'Failed to add product'}`);
+        const errorMsg = error.response.data.message || 
+                         error.response.data.title || 
+                         JSON.stringify(error.response.data.errors) || 
+                         'Failed to add product';
+        setMessage(`Error: ${errorMsg}`);
+      } else if (error.request) {
+        setMessage('Network error: Unable to reach server. Please check your connection.');
       } else {
-        setMessage('Network error - please check your connection');
+        setMessage(`Error: ${error.message}`);
       }
     }
   };
@@ -180,7 +213,8 @@ const AddProduct = () => {
       usage: '',
       product_new_price: '',
       product_old_price: '',
-      product_pic: ''
+      product_pic: '',
+      designedFor: ''
     }));
     setMessage('');
     setErrors({});
@@ -293,7 +327,7 @@ const AddProduct = () => {
           </div>
         </div>
 
-         <div className="form-row">
+        <div className="form-row">
           <div className="form-group">
             <input
               type="number"
@@ -304,33 +338,33 @@ const AddProduct = () => {
               min="0"
               step="0.1"
             />
-         </div>
+          </div>
 
-         <div className="form-group">
-          <select
-            name="usage"
-            value={formData.usage}
-            onChange={handleChange}
-          >
-            <option value="">Select Usage</option>
-            {Object.entries(usages).map(([category, items]) => (
-              <optgroup key={category} label={category}>
-                {items.map(item => (
-                  <option key={item} value={item}>{item}</option>
-                ))}
-              </optgroup>
-            ))}
-          </select>
-         </div>
+          <div className="form-group">
+            <select
+              name="usage"
+              value={formData.usage}
+              onChange={handleChange}
+            >
+              <option value="">Select Usage</option>
+              {Object.entries(usages).map(([category, items]) => (
+                <optgroup key={category} label={category}>
+                  {items.map(item => (
+                    <option key={item} value={item}>{item}</option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
+          </div>
 
-        <div className="form-group">
-          <input
-            type="date"
-            name="expiration"
-            value={formData.expiration}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="date"
+              name="expiration"
+              value={formData.expiration}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         <div className="form-group">
@@ -345,43 +379,41 @@ const AddProduct = () => {
         </div>
 
         <div className="form-group">
-        <div className="form-group image-upload-container">
-          <label className="file-upload-label">
-            Choose Product Image
-            <input
-              type="file"
-              name="product_pic"
-              accept="image/*"
-              onChange={handleChange}
-              className="file-input"
-            />
-          </label>
-          
-          {isUploading && (
-            <div className="upload-progress">
-              <div 
-                className="progress-bar"
-                style={{ width: `${uploadProgress}%` }}
-              ></div>
-              <span className="progress-text">{uploadProgress}%</span>
-            </div>
-          )}
-          
-          {formData.product_pic && (
-            <div className="image-preview">
-              <img src={formData.product_pic} alt="Product preview" />
-              {!isUploading && (
-                <div className="upload-success">
-                  <span className="success-icon">✓</span>
-                  Ready
-                </div>
-              )}
-            </div>
-          )}
+          <div className="form-group image-upload-container">
+            <label className="file-upload-label">
+              Choose Product Image
+              <input
+                type="file"
+                name="product_pic"
+                accept="image/*"
+                onChange={handleChange}
+                className="file-input"
+              />
+            </label>
+            
+            {isUploading && (
+              <div className="upload-progress">
+                <div 
+                  className="progress-bar"
+                  style={{ width: `${uploadProgress}%` }}
+                ></div>
+                <span className="progress-text">{uploadProgress}%</span>
+              </div>
+            )}
+            
+            {formData.product_pic && (
+              <div className="image-preview">
+                <img src={formData.product_pic} alt="Product preview" />
+                {!isUploading && (
+                  <div className="upload-success">
+                    <span className="success-icon">✓</span>
+                    Ready
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-        </div>
-
-        
 
         <div className="form-actions">
           <button type="button" className="clear-btn" onClick={clearForm}>

@@ -90,10 +90,25 @@ const Payment = () => {
 
   const handleExpiryDateChange = (e) => {
     let value = e.target.value.replace(/\D/g, '');
-    if (value.length > 2) {
-      value = `${value.slice(0, 2)}/${value.slice(2, 4)}`;
+    let month = value.slice(0, 2);
+    let year = value.slice(2, 4);
+
+    // Prevent month > 12
+    if (month.length === 2 && parseInt(month, 10) > 12) {
+      month = '12';
     }
-    setExpiryDate(value.slice(0, 5));
+
+    // Prevent year > 30
+    if (year.length === 2 && parseInt(year, 10) > 30) {
+      year = '30';
+    }
+
+    let formatted = month;
+    if (year.length > 0) {
+      formatted += '/' + year;
+    }
+
+    setExpiryDate(formatted.slice(0, 5));
   };
 
   const handleCvvChange = (e) => {

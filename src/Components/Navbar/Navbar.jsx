@@ -224,7 +224,7 @@ export const Navbar = () => {
       <div className="nav-search">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search for users , animal ..."
           value={searchQuery}
           onChange={handleSearchChange}
         />

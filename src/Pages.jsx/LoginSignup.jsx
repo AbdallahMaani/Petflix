@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Footer from '../Components/Footer/Footer';
 import { Link } from 'react-router-dom';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const LoginSignup = () => {
   const [isActive, setIsActive] = useState(false);
@@ -33,6 +34,7 @@ const LoginSignup = () => {
   });
   const [signUpFeedback, setSignUpFeedback] = useState('');
   const [signUpFeedbackType, setSignUpFeedbackType] = useState(''); // 'success' or 'error'
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const countryCodes = {
@@ -416,13 +418,36 @@ const LoginSignup = () => {
                 onChange={(e) => setUsernameOrEmail(e.target.value)}
                 required
               />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <div style={{ position: "relative" }}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  style={{ minWidth: "22.2rem" }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  style={{
+                    position: "absolute",
+                    right: "0.5rem",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: "#888",
+                    fontSize: "1.1rem",
+                    padding: 0
+                  }}
+                  tabIndex={-1}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                </button>
+              </div>
               {error && <p className="error-message2">{error}</p>}
               <Link to="/forgot-password">Forgot Your Password?</Link>
               <button className="login-signup-btn" type="submit">Sign In</button>
