@@ -74,7 +74,13 @@ const FeedbackPage = () => {
         setReports(reportsRes.data);
 
       } catch (err) {
-        setErrorMessage(err.response?.data?.message || 'Failed to fetch feedback or reports');
+        console.error("Feedback/Report fetch error:", err, err.response);
+        setErrorMessage(
+          err.response?.data?.message ||
+          err.response?.data ||
+          err.message ||
+          'Failed to fetch feedback or reports'
+        );
       }
     };
 
