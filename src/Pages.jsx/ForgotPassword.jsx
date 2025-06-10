@@ -1,35 +1,35 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Pages.css/ForgotPassword.css'; // Create this CSS file
+import '../Pages.css/ForgotPassword.css';
 import Footer from '../Components/Footer/Footer';
 
 const ForgotPassword = () => {
-  const [usernameOrEmail, setUsernameOrEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage('Sending email...'); // Initial message
+    setMessage('Sending email...');
 
     try {
-      const response = await fetch('https://petflix-backend-620z.onrender.com/api/User/ForgotPassword', { // Replace with your API endpoint
+      const response = await fetch('https://petflix-backend-620z.onrender.com/api/User/ForgotPassword', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ usernameOrEmail }),
+        body: JSON.stringify({ email }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(data.message); // Success message from the API
+        setMessage(data.message);
         setTimeout(() => {
-          navigate('/login'); // Redirect to login page after a delay
-        }, 3000); // Adjust delay as needed
+          navigate('/login');
+        }, 3000);
       } else {
-        setMessage(data.message); // Error message from the API
+        setMessage(data.message);
       }
     } catch (error) {
       console.error('Forgot Password Error:', error);
@@ -42,13 +42,13 @@ const ForgotPassword = () => {
       <div className="forgot-password-page">
         <div className="forgot-password-container">
           <h1>Forgot Your Password?</h1>
-          <p>Enter your username or email address and we'll send you instructions on how to reset your password.</p>
+          <p>Enter your email address and we'll send you your password.</p>
           <form onSubmit={handleSubmit}>
             <input
-              type="text"
-              placeholder="Username or Email"
-              value={usernameOrEmail}
-              onChange={(e) => setUsernameOrEmail(e.target.value)}
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <button type="submit">Send Email</button>

@@ -20,6 +20,7 @@ const AnimalsContext = () => {
   });
   const [filteredData, setFilteredData] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(10000); // default fallback
 
   const categories = ["Dog", "Cat", "Bird", "Fish", "Horse", "Sheep", "Goats", "Camel", "Cow", "Small Animal", "Reptile", "Poultry", "Other"];
 
@@ -60,6 +61,19 @@ const AnimalsContext = () => {
   useEffect(() => {
     applyFiltersAndSort();
   }, [animals, searchQuery, sortBy, filters]);
+
+  useEffect(() => {
+    if (animals.length > 0) {
+      const prices = animals.map(a => a.animal_new_price ?? 0);
+      const max = Math.max(...prices, 0);
+      setMaxPrice(max > 0 ? Math.ceil(max / 10) * 10 : 1000); // round up to nearest 10
+      // Optionally, reset priceRange if needed:
+      setFilters(f => ({
+        ...f,
+        priceRange: [0, max > 0 ? Math.ceil(max / 10) * 10 : 1000]
+      }));
+    }
+  }, [animals]);
 
   const extractAgeNumber = (ageString) => {
     if (!ageString) return 0;
@@ -106,7 +120,6 @@ const AnimalsContext = () => {
   const handlePriceRangeChange = (e) => {
     const value = parseInt(e.target.value, 10);
     const minPrice = 0;
-    const maxPrice = 10000;
     const range = maxPrice - minPrice;
     const newMinPrice = minPrice + (value / 100) * range;
     const roundedMinPrice = Math.round(newMinPrice / 10) * 10;
@@ -253,7 +266,7 @@ const AnimalsContext = () => {
               type="range"
               min="0"
               max="100"
-              value={(filters.priceRange[0] - 0) / (10000 - 0) * 100}
+              value={((filters.priceRange[0] - 0) / (maxPrice - 0)) * 100}
               onChange={handlePriceRangeChange}
               className="price-slider"
             />

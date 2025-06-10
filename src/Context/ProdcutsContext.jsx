@@ -49,6 +49,7 @@ const ProductsContext = () => {
   });
   const [filteredData, setFilteredData] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(500); // default fallback
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -83,6 +84,18 @@ const ProductsContext = () => {
     };
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      const prices = products.map(p => p.product_new_price ?? 0);
+      const max = Math.max(...prices, 0);
+      setMaxPrice(max > 0 ? Math.ceil(max / 10) * 10 : 500); // round up to nearest 10
+      setFilters(f => ({
+        ...f,
+        priceRange: [5, max > 0 ? Math.ceil(max / 10) * 10 : 500]
+      }));
+    }
+  }, [products]);
 
   useEffect(() => {
     applyFiltersAndSort();
@@ -139,7 +152,6 @@ const ProductsContext = () => {
   const handlePriceRangeChange = (e) => {
     const value = parseInt(e.target.value, 10);
     const minPrice = 5;
-    const maxPrice = 500;
     const range = maxPrice - minPrice;
     const newMinPrice = minPrice + (value / 100) * range;
     setFilters(prev => ({
@@ -281,7 +293,7 @@ const ProductsContext = () => {
               min="0"
               max="100"
               className="price-slider"
-              value={(filters.priceRange[0] - 5) / (500 - 5) * 100}
+              value={((filters.priceRange[0] - 5) / (maxPrice - 5)) * 100}
               onChange={handlePriceRangeChange}
               step="1"
             />
