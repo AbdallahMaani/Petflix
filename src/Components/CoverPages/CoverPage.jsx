@@ -54,7 +54,6 @@ const CoverPage = ({ image, title, description, links, buttonText, buttonLink, c
           src={image} 
           alt="Cover" 
           className={`cover-image ${isVisible ? 'visible' : ''}`}
-          loading="lazy" // Add lazy loading
         />
         <div className="cover-gradient-overlay" />
       </div>
