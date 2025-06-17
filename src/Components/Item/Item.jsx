@@ -297,7 +297,12 @@ const Item = memo((props) => {
   return (
     <div>
       <div className={`item ${props.className || ''}`}>
-        <img src={props.animal_pic || props.product_pic} alt={props.animal_title || props.product_title} />
+      <img
+        src={props.animal_pic || props.product_pic}
+        alt={props.animal_title || props.product_title}
+        loading="lazy"
+        decoding="async"
+      />
         <p>{props.animal_title || props.product_title}</p>
 
         <button
